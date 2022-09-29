@@ -1,5 +1,5 @@
 from django.contrib import admin
-from about.models import AboutUs,ChairPerson, Personel, Mission, MDsMessage, Department, Functions, Objectives, Vision, ServiceCharter, CoreValue
+from about.models import AboutUs,ChairPerson, Personel, Mission, MDsMessage, Department, Functions, Objectives, Vision, ServiceCharter, CoreValues
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -115,8 +115,9 @@ class ServiceCharterAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(AboutUs, AboutUsAdmin)
-admin.site.register(Personel, PersonelAdmin)
 admin.site.register(ChairPerson, ChairPersonAdmin)
+admin.site.register(Personel, PersonelAdmin)
+# admin.site.register(ChairPerson, ChairPersonAdmin)
 admin.site.register(Mission, MissionAdmin)
 admin.site.register(MDsMessage, MDsMessageAdmin)
 admin.site.register(Department, DepartmentAdmin)
@@ -124,4 +125,4 @@ admin.site.register(Functions, FunctionsAdmin)
 admin.site.register(Objectives, ObjectivesAdmin)
 admin.site.register(Vision, VisionAdmin)
 admin.site.register(ServiceCharter, ServiceCharterAdmin)
-admin.site.register(CoreValue, CoreValueAdmin)
+admin.site.register(CoreValues, CoreValueAdmin)

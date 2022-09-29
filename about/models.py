@@ -86,7 +86,43 @@ class Personel(models.Model):
 
     def __str__(self):
         return '%s %s %s' % (self.first_name, self.middle_name, self.last_name)
+class ChairPerson(models.Model):
+    first_name = models.CharField(max_length=50)
+    middle_name = models.CharField(
+        max_length=50, blank=True, help_text='Optional')
+    last_name = models.CharField(max_length=50)
+    position = models.CharField(max_length=100)
+    description = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to='media',  null=True,
+                              blank=True, help_text='Image size should be in .jpg or .png')
+    category = models.IntegerField(
+        choices=CATEGORY, default=0, help_text='select Peronel membership title')
+    status = models.IntegerField(
+        choices=STATUS, default=0, help_text='Change to Publish for it to be seen')
+    pub_date = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name = 'ChairPerson'
+        verbose_name_plural = 'ChairPerson'
+
+    @property
+    def short_description(self):
+        return truncatechars(self.description, 20)
+
+    def full_name(self):
+        return '%s %s %s' % (self.first_name, self.middle_name, self.last_name)
+
+    full_name.short_description = 'Name'
+    full_name.allow_tags = True
+
+    def profile_photo(self):
+        return mark_safe('<img src="{}" width="100px" />'.format(self.image.url))
+
+    profile_photo.short_description = 'Image'
+    profile_photo.allow_tags = True
+
+    def __str__(self):
+        return '%s %s %s' % (self.first_name, self.middle_name, self.last_name)
 
 class MDsMessage(models.Model):
     title = models.CharField(
@@ -213,7 +249,7 @@ class Vision(models.Model):
         return self.title
 
 
-class CoreValue(models.Model):
+class CoreValues(models.Model):
     title = models.CharField(max_length=200, default='Core Values')
     statement = models.TextField()
     status = models.IntegerField(

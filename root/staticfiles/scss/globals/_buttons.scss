@@ -1,0 +1,54 @@
+<<<<<<< HEAD
+%btn{
+    display: inline-block;
+    border-radius: 3px;
+    padding: 7px 20px;
+    margin: 1em;
+    border: none;
+
+    &:hover{
+        border-radius: 50px; 
+    }
+}
+
+.btn-primary{
+    @extend %btn;
+    @include set_background($primary_color);
+}
+
+.btn-secondary{
+    @extend %btn;
+    @include set_background($secondary_color);
+}
+
+.btn-white{
+    @extend %btn;
+    @include set_background($white);
+=======
+%btn{
+    display: inline-block;
+    border-radius: 3px;
+    padding: 7px 20px;
+    margin: 1em;
+    border: none;
+
+    &:hover{
+        border-radius: 50px; 
+    }
+}
+
+.btn-primary{
+    @extend %btn;
+    @include set_background($primary_color);
+}
+
+.btn-secondary{
+    @extend %btn;
+    @include set_background($secondary_color);
+}
+
+.btn-white{
+    @extend %btn;
+    @include set_background($white);
+>>>>>>> 89ce836f4d54b5e65ca84936565d5dc8994143e6
+}

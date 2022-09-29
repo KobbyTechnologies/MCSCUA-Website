@@ -1,0 +1,154 @@
+<<<<<<< HEAD
+.social {
+    position: fixed;
+    z-index: 998;
+    height: 100vh;
+    align-content: center;
+    top: 50%;
+    right: 0;
+
+    &__links {
+
+        background: #fff;
+
+        ul {
+            display: flex;
+            flex-flow: column;
+            height: 100%;
+            align-items: center;
+
+            &>li {
+                width: 2.2em;
+                top: 50%;
+                margin: 0;
+                padding: 0;
+
+                border-bottom: 1px solid;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                @include u.breakpoint-down(small) {
+                    width: 40px;
+                }
+
+                i {
+                    margin: .2em;
+                    font-size: 30px;
+                    object-fit: cover;
+                    -o-object-fit: cover;
+
+
+                    
+                    
+                    &:hover {
+                        color: $secondary_color;
+                    }
+                }
+                
+                a {}
+            }
+        }
+        
+    }
+}
+
+.fa-linkedin,
+.fa-linkedin-in{
+    color: #144477;
+}
+
+.fa-twitter {
+    color: #1c93e4;
+}
+
+.fa-facebook-square ,
+.fa-facebook ,
+.fa-facebook-f {
+    color: #1771e6;
+}
+
+.la-youtube {
+    color: #f20000;
+}
+.fa-youtube {
+    color: #f20000;
+=======
+.social {
+    position: fixed;
+    z-index: 998;
+    height: 100vh;
+    align-content: center;
+    top: 50%;
+    right: 0;
+
+    &__links {
+
+        background: #fff;
+
+        ul {
+            display: flex;
+            flex-flow: column;
+            height: 100%;
+            align-items: center;
+
+            &>li {
+                width: 2.2em;
+                top: 50%;
+                margin: 0;
+                padding: 0;
+
+                border-bottom: 1px solid;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                @include u.breakpoint-down(small) {
+                    width: 40px;
+                }
+
+                i {
+                    margin: .2em;
+                    font-size: 30px;
+                    object-fit: cover;
+                    -o-object-fit: cover;
+
+
+                    
+                    
+                    &:hover {
+                        color: $secondary_color;
+                    }
+                }
+                
+                a {}
+            }
+        }
+        
+    }
+}
+
+.fa-linkedin,
+.fa-linkedin-in{
+    color: #144477;
+}
+
+.fa-twitter {
+    color: #1c93e4;
+}
+
+.fa-facebook-square ,
+.fa-facebook ,
+.fa-facebook-f {
+    color: #1771e6;
+}
+
+.la-youtube {
+    color: #f20000;
+}
+.fa-youtube {
+    color: #f20000;
+>>>>>>> 89ce836f4d54b5e65ca84936565d5dc8994143e6
+}

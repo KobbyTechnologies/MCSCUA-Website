@@ -10,23 +10,33 @@ SECRET_KEY = 'django-insecure-kos#arysn&f%^lq3#ey2$_%46@u+$%&7blhxt86&iizicrjaf@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost', 'makueni-sand-authotiry.herokuapp.com']
+ALLOWED_HOSTS = ['20.87.45.223','localhost', '127.0.0.1','www.makuenisandauthority.go.ke','217.174.152.52']
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
-
 DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'makueni',
-            'USER': 'hypertext',
-            'PASSWORD': 'assassin',
-            'HOST': 'localhost',
-            'PORT': '',
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'makueni',
+        'USER': 'postgres',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '',
     }
+}
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'new',
+#         'USER': 'postgres',
+#         'PASSWORD': 'admin',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -34,13 +44,7 @@ DATABASES = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
-
-
-
-
-

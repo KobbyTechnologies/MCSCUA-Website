@@ -1,0 +1,137 @@
+<<<<<<< HEAD
+
+.projects{
+    margin-inline: 2em;
+    margin-block: 1em;
+
+    .heading h1{
+        text-align: center;
+    }
+    
+    &__inner{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2em;
+
+        &--content{
+            padding: 1em;
+        }
+
+        &--detail{
+            
+            width: 80vw;
+            display: flex;
+            img{
+                max-width: 500px;
+                min-width: 300px;
+            }
+        }
+        
+        &--item{
+            max-width: 270px;
+            border-left: 1px solid;
+
+            img{
+                width: 100%;
+                aspect-ratio: 4/3;
+                object-fit: cover;
+            }
+
+            h2{
+                font-size: 1.4em;
+                font-weight: 700;
+                color: $secondary_color;
+
+            }
+            p{
+                text-align: justify;
+            }
+            a{
+                padding: 8px 20px;
+                margin-block: 10px;
+                border-radius: 20px;
+                bottom: 0;
+                float: inline-start;
+                text-transform: capitalize;
+                @include set_background($primary_color);
+                
+                &:hover{
+                    @include set_background($fade);
+                    border: 1px solid;
+                    padding-block: 7px;
+
+                }
+            }
+        }
+    }
+    
+=======
+
+.projects{
+    margin-inline: 2em;
+    margin-block: 1em;
+
+    .heading h1{
+        text-align: center;
+    }
+    
+    &__inner{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2em;
+        justify-content: center;
+
+        &--content{
+            padding: 1em;
+        }
+
+        &--detail{
+            
+            width: 80vw;
+            display: flex;
+            img{
+                max-width: 500px;
+                min-width: 300px;
+            }
+        }
+        
+        &--item{
+            max-width: 270px;
+            border-left: 1px solid;
+
+            img{
+                width: 100%;
+                aspect-ratio: 4/3;
+                object-fit: cover;
+            }
+
+            h2{
+                font-size: 1.4em;
+                font-weight: 700;
+                color: $secondary_color;
+
+            }
+            p{
+                text-align: justify;
+            }
+            a{
+                padding: 8px 20px;
+                margin-block: 10px;
+                border-radius: 20px;
+                bottom: 0;
+                float: inline-start;
+                text-transform: capitalize;
+                @include set_background($primary_color);
+                
+                &:hover{
+                    @include set_background($fade);
+                    border: 1px solid;
+                    padding-block: 7px;
+
+                }
+            }
+        }
+    }
+    
+>>>>>>> 89ce836f4d54b5e65ca84936565d5dc8994143e6
+}

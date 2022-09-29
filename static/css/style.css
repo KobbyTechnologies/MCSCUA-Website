@@ -1093,6 +1093,12 @@ textarea {
   justify-content: center;
   text-align: center;
 }
+.grid__main .leaders {
+  display: flex;
+  gap: 1.5em;
+  flex-wrap: wrap;
+  text-align: center;
+}
 @media (max-width: 699.98px) {
   .grid__main .leader {
     display: grid;

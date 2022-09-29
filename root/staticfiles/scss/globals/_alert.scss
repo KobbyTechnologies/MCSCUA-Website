@@ -1,0 +1,27 @@
+.alert {
+    padding: 1em;
+    border: 1px solid;
+
+    .button {
+        margin-left: 15px;
+        color: white;
+        // font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover{
+            padding: 3px;
+            border-radius: 20px;
+            @include set_background(white)
+        }
+
+    }
+
+    &-success {
+        @include set_background(#8bd0a7);
+        color: #1a5532;
+    }
+}

@@ -14,7 +14,9 @@
             <div class="job__desc">
                 <h1>{{ object.title }}</h1>
                 <p><span>Job ID:</span> {{ object.job_ID }}</p>
-                <p>{{ object.description | safe }}</p>
+                <p>
+                    {{ object.job_description | safe }}
+                </p>
                 <div class="job__desc--top-rqm">
                     <p><i class="fa-solid fa-clock"></i>Post Date: {{ object.pub_date | date }}</p>
                     <p><i class="fa-solid fa-briefcase"></i>Job Type: {{ object.job_type |safe }}</p>
