@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Boad of Directors {% endblock title %}
+{% block title %} Board of Directors {% endblock title %}
 
 {% block body %}
 <section class="hero">
@@ -16,23 +16,7 @@
                 <h1>Board of Directors</h1>
                 <div class="linebg_2"></div>
             </div>
-<<<<<<< HEAD
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="leader">
-                        <div class="leader__content mx-auto tex my-3">
-                            <img src="{{ chair.image.url }}" alt="profile picture">
-                            <h2>{{ chair.position }}</h2>
-                            <h1>{{ chair.first_name }} {{ chair.middle_name }} {{ chair.last_name }}</h1>
-                            <p>{{ chair.description | safe }}</p>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-=======
-    
->>>>>>> 89ce836f4d54b5e65ca84936565d5dc8994143e6
             <div class="leader mt-3 mb-3">
                 <div class="leader__content ">
                     <img src="{{ chair.image.url }}" alt="profile picture">
@@ -50,9 +34,7 @@
                 </div>
                 {% endfor %}
             </div>
-
         </div>
-
     </main>
     <aside class="grid__sidebar">
         {% include 'aside.html' %}

@@ -1,0 +1,406 @@
+@use '../utils/breakpoints' as u;
+
+.flex {
+    display: flex;
+
+}
+
+.logo {
+    padding: .5em;
+
+    a {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+
+    }
+
+    img {
+
+        width: 70px;
+    }
+
+    h2 {
+        font-size: 1em;
+        line-height: 1;
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+}
+
+
+.header__top {
+    @include set_background($primary_color);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: .8em;
+    width: 100%;
+
+    @include u.breakpoint-down(xsmall) {
+        position: fixed;
+        z-index: 9999;
+    }
+
+    .search {
+        width: 400px;
+
+        input {
+            @include set_background($primary_color_dark);
+            color: $white;
+            width: 400px;
+            border: none;
+            padding-left: 1em;
+            float: left;
+            width: 80%;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+
+            &::placeholder {
+                color: $white;
+            }
+        }
+
+        button {
+            @include set_background($primary_color_darker);
+            float: left;
+            width: 20%;
+            padding: 10px;
+            font-size: 17px;
+            margin: 8px 0;
+            border: none;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            cursor: pointer
+        }
+    }
+
+    .easy-contact {
+        display: none;
+
+    }
+
+    @include u.breakpoint(large) {
+        .easy-contact {
+            display: flex;
+            gap: 1em;
+            justify-content: space-evenly;
+            margin-inline: 1em;
+            padding-block: 10px;
+
+
+
+            li {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .easy-contact-icon i {
+                    font-size: 15px;
+                    margin-inline-end: 5px;
+                    border-radius: 100%;
+                    @include set_background($primary_color);
+                    // border: 1px solid;
+                }
+
+                .easy-contact-info {
+                    padding: .5em;
+
+                    span {
+                        font-size: x-small;
+                        color: grey;
+                        line-height: 1;
+                    }
+
+                    p {
+                        font-weight: 600;
+                        line-height: 1;
+                    }
+
+                }
+            }
+        }
+    }
+    .top-links{
+        display: flex;
+
+        .login{
+            a{
+                font-weight: 700;
+                text-transform: uppercase;
+                &:hover{
+                    color: $secondary_color;
+                }
+            }
+        }
+    }
+
+}
+
+@include u.breakpoint-down(small) {
+    .cta {
+        display: none;
+    }
+}
+
+.cta {
+    padding-inline: clamp(1rem, 90vw, 3rem);
+
+    a {
+        @include set_background($white);
+        padding: .5em 2em;
+        border-radius: 20px;
+
+
+        &:hover {
+            @include set_background($primary_color);
+            border: 1px solid;
+        }
+    }
+}
+
+.header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    display: flex;
+    gap: 2em;
+    @include set_background($white);
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-block: .1em;
+    margin: 0;
+    z-index: 9999;
+    transition: 500ms;
+
+
+    @include u.breakpoint-down(xsmall) {
+        @include set_background($white);
+        justify-content: space-between;
+    }
+
+    @include u.breakpoint-down(medium) {
+        justify-content: space-between;
+    }
+
+    nav {
+        text-align: left;
+    }
+
+
+
+    .primary-navigation {
+        list-style: none;
+        float: right;
+
+        i {
+            margin-inline-start: .1em;
+        }
+
+        @include u.breakpoint(large) {
+            padding-inline: 1em;
+        }
+
+        @include u.breakpoint-down(medium) {
+            position: fixed;
+            inset: 0 0 0 30%;
+            z-index: -1;
+            flex-direction: column;
+            padding-inline: 2em;
+            gap: 1.3em;
+            padding-block: min(15vh, 10rem);
+            transform: translateX(100%);
+            transition: transform 400ms ease-in-out;
+
+            &[data-visible="true"] {
+                transform: translateX(0);
+            }
+
+            @include set_background($header_bg_dark);
+
+            @supports (backdrop-filter: blur(1rem)) {
+                @include set_background($white);
+                backdrop-filter: blur(1rem);
+            }
+        }
+
+        a,
+        span {
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: .9em;
+            letter-spacing: 1px;
+            line-height: 1;
+            color: inherit;
+            opacity: 1;
+            position: relative;
+            cursor: pointer;
+
+            &::before {
+                content: '';
+                display: block;
+                height: 2px;
+                background-color: $secondary_color;
+                position: absolute;
+                bottom: -0.3em;
+                left: 0;
+                right: 0;
+                transform: scale(0, 1);
+                transition: transform ease-in-out 250ms;
+            }
+
+            @include u.breakpoint-down(large) {
+                font-size: .7em;
+            }
+
+            @include u.breakpoint-down(medium) {
+                font-size: .9em;
+            }
+
+            &:hover::before {
+                transform: scale(1, 1);
+            }
+
+            &:hover {
+                color: $secondary_color;
+            }
+
+        }
+
+
+        li {
+            // cursor: pointer;
+            // border-inline-end: 1px solid;
+            padding-inline: 10px;
+
+            &:last-child {
+                border-inline-end: none;
+            }
+
+            @include u.breakpoint-down(medium) {
+                border-inline-end: none;
+                font-size: .8em;
+            }
+        }
+
+        li:hover .sub-menu {
+            @include set_background($white);
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            z-index: 99;
+            margin-top: 0;
+            margin-left: 1px;
+
+
+            a {
+                width: 250px;
+                padding: .8em;
+                border-radius: 0;
+                text-align: left;
+                border-right: none;
+                text-transform: capitalize;
+                font-weight: 500;
+
+                &:hover {
+                    @include set_background($light_color);
+                    color: $secondary_color;
+                    font-weight: 600;
+                    padding-left: 1.5em;
+                }
+
+                &:hover::before {
+                    display: none;
+                    background-color: unset;
+                }
+            }
+
+            @include u.breakpoint-down(xsmall) {
+                position: relative;
+            }
+
+        }
+
+
+    }
+
+    .sub-menu {
+        display: none;
+        font-weight: 500;
+
+        .sub-menu {
+
+            &-row {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            &-col {
+                display: flex;
+                flex-direction: column;
+                border-left: 1px solid;
+
+                &-list{
+                    display: flex;
+                    flex-direction: column;
+
+                }
+
+
+            }
+
+            &-heading {
+                font-weight: 800;
+                color: $primary_color;
+            }
+        }
+
+    }
+
+}
+
+
+@include breakpoint(large) {
+    .mobile-nav-toggle {
+        display: none;
+    }
+}
+
+@include breakpoint-down(medium) {
+    .mobile-nav-toggle {
+        position: absolute;
+        background-image: url(../img/assets/menu-b.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border: none;
+        width: 2rem;
+        aspect-ratio: 1;
+        top: 2rem;
+        right: 2rem;
+        z-index: 9999;
+        cursor: pointer;
+
+        &:focus,
+        &:focus-visible {
+            background-color: transparent;
+            box-sizing: border-box;
+            box-shadow: none;
+            outline: none;
+        }
+
+        &[aria-expanded="true"] {
+            background-image: url(../img/assets/close-b.png)
+        }
+
+        @include set_background($header_bg_dark);
+
+        @supports (backdrop-filter: blur(1rem)) {
+            @include set_background($header_bg_light);
+            backdrop-filter: blur(1rem);
+        }
+    }
+
+}
