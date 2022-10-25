@@ -1,4 +1,3 @@
-from unicodedata import category
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Faq, Publication, Terms, Privacy, PubCategory
@@ -28,63 +27,9 @@ def reports_view(request, pk):
         'publication_category': publication_category,
         'publication_category_in': publication_category_in,
         'project_category': project_category,
-        # 'filesize': filesize,
     }
     return render(request, 'reports.html', context)
 
-
-# def acts_view(request):
-#     publication = Publication.objects.filter(status=1, category=0).all()
-#     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
-#     project_category = ProjectCategory.objects.all()
-#     if request.method == 'POST':
-#         form = SubscriptionForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#     form = SubscriptionForm()
-#     context = {
-#         'project_category': project_category,
-#         'publication': publication,
-#         'post': post,
-#         'form': form,
-#     }
-#     return render(request, 'acts.html', context)
-
-
-# def harvesting_view(request):
-#     publication = Publication.objects.filter(status=1, category=2).all()
-#     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
-#     project_category = ProjectCategory.objects.all()
-#     if request.method == 'POST':
-#         form = SubscriptionForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#     form = SubscriptionForm()
-#     context = {
-#         'pub': publication,
-#         'post': post,
-#         'form': form,
-#         'project_category': project_category,
-#     }
-#     return render(request, 'harvesting.html', context)
-
-
-# def delers_view(request):
-#     publication = Publication.objects.filter(status=1, category=1).all()
-#     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
-#     project_category = ProjectCategory.objects.all()
-#     if request.method == 'POST':
-#         form = SubscriptionForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#     form = SubscriptionForm()
-#     context = {
-#         'pub': publication,
-#         'post': post,
-#         'form': form,
-#         'project_category': project_category,
-#     }
-#     return render(request, 'dealers.html', context)
 
 
 def faq_view(request):
