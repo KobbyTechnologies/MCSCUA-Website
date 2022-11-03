@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import JobAdvert, Tender
+from .models import JobAdvert, Tender, PrequalifiedTender, ContractAward
 from blog.models import Post
 from base.forms import SubscriptionForm
+from.forms import SupplierRegistrationForm
 from resources.models import PubCategory
 from projects.models import ProjectCategory
 
@@ -47,16 +48,29 @@ def tender_view(request):
     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
     publication_category = PubCategory.objects.all()
     project_category = ProjectCategory.objects.all()
+    prequalified_tender = PrequalifiedTender.objects.all()
+    contract_award = ContractAward.objects.all()
+    
+    
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
     form = SubscriptionForm()
+
+    if request.method == 'POST':
+        supplier_registration = SupplierRegistrationForm(request.POST)
+        if supplier_registration.is_valid():
+            form.save()
+    supplier_registration = SupplierRegistrationForm()
     context = {
         'tender': tender,
         'post': post,
         'form': form,
         'publication_category': publication_category,
         'project_category': project_category,
+        'supplier_registration': supplier_registration,
+        'prequalified_tender': prequalified_tender,
+        'contract_award': contract_award,
     }
     return render(request, 'tenders.html', context)

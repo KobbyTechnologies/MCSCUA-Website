@@ -9,7 +9,7 @@ from blog.models import STATUS
 
 class ProjectCategory(models.Model):
     category = models.CharField(max_length=255)
-    # description = models.TextField(blank=True)
+    description = models.TextField(blank=True)
     slug = models.SlugField(max_length = 255)
 
     class Meta:
