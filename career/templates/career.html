@@ -28,12 +28,11 @@
                         <ul>
                             <li>Status: {{ job.job_status |safe }} </li>
                             <li><i class="fa-solid fa-briefcase"></i>{{ job.job_type | safe }}</li>
-                            <li><i class="fa-solid fa-clock"></i>Deadline: {{ job.deadline | date }}</li>
                         </ul>
                     </div>
                     
                     <div class="desc-btn">
-                        <a href="{% url 'career_info' job.slug %}">View Full Job Description</a>
+                    <!-- <a href="{% url 'career_info' job.slug %}">View Full Job Description</a> -->
                     </div>
 
                 </div>

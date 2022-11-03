@@ -1,0 +1,8 @@
+﻿2022-10-12T17:08:18.117       11460 UserSettings                   ConnectionOptions                        Warning          Password removed from user settings file for instance 'MCSC-VM\NAV' and authentication type 0
+2022-10-12T17:08:18.195       11460 UserSettings                   Settings<T>                              Information      User Settings save scheduled.
+2022-10-12T17:08:19.298       13384 UserSettings                   Settings<T>                              Information      User Settings successfully saved.
+2022-10-12T17:09:34.195       11460 UserSettings                   ConnectionOptions                        Warning          Password removed from user settings file for instance 'MCSC-VM\NAV' and authentication type 0
+2022-10-12T17:09:34.195       11460 UserSettings                   Settings<T>                              Information      User Settings save scheduled.
+2022-10-12T17:09:35.195       12716 UserSettings                   Settings<T>                              Information      User Settings successfully saved.
+2022-10-12T17:14:15.203       11460 UserSettings                   Settings<T>                              Information      User Settings to be saved immediately.
+2022-10-12T17:14:15.218       11460 UserSettings                   Settings<T>                              Information      User Settings successfully saved.

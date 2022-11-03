@@ -7,5 +7,10 @@ media/
 2/
 __TEMP__56C3A35648084B30A0CCD9F632EB2788.tmp
 __TEMP__6754EBCBAFEE41F4A751EAF1FE2BA40D.tmp
+*.tmp/
+empty.txt
 gfwyoxqe.bx5
 venv/
+SSMS/
+vs.mcj-1209684039/
+VSRemoteControl/

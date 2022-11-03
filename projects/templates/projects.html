@@ -35,37 +35,71 @@
 
         {% endfor %}
     </div>
-    <div class="">
-        {% if is_paginated %}
-        <div class="pagination">
+    {% if projects.has_other_pages %}
+    <nav>
+        <style>
+            .pagination {
+                display: flex !important;
+                justify-content: center;
+                margin-block: 3em;
+                gap: 5px;
+            }
 
-            <div class="nav-links">
+            .page-link {
+                background-color: #e8e8e8;
+                border-radius: 4px;
+                padding: 8px 16px;
+                aspect-ratio: 1;
+                text-align: center;
+                font-size: medium;
+            }
 
-                {% if page_obj.has_previous %}
-                <a class="page-numbers" href="?page=1">&laquo; First</a>
-                <a class="page-numbers" href="?page={{ page_obj.previous_page_number }}">previous</a>
-                {% endif %}
+            .page-link:hover,
+            .page-link.active {
+                background-color: #90cd4b;
+                border: none;
+                color: white;
+            }
+        </style>
+        <ul class="pagination ">
+            {% if projects.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ projects.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">Prev</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">Prev</span>
+            </li>
+            {% endif %}
 
-                <a class="page-numbers current" href="?page={{ page_obj.current_page_number }}"> Page
-                    {{ page_obj.number}} of {{page_obj.paginator.num_pages}} </a>
+            {% for p in projects.paginator.page_range %}
+            {% if projects.number == p %}
+            <li class="page-item "><a class="page-link active" href="#">{{ p }}</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
+            {% endif %}
+            {% endfor %}
 
-                {% if page_obj.has_next %}
-                <a class="page-numbers" href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
-                <a class="page-numbers" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                {% else %}
-                <a class="page-numbers current" href="?page={{ page_obj.paginator.num_pages }}">Last </a>
-                {% endif %}
-            </div>
+            {% if projects.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ projects.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">Next</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">Next</span>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
 
-        </div>
-        {% endif %}
-    </div>
+    {% endif %}
 
 
 </div>
-
-
-
 
 
 
@@ -74,34 +108,3 @@
 
 
 {% endblock body %}
-
-
-{% for post in projects %}
-<p>{{post.title}}</p>
-{% endfor %}
-
-{% for ct in all_categs %}
-<div>
-    <div> <a href="{{ ct.category.id }}">{{ct.category}}</a></div>
-    {% for post in ct.postcategory.all %}
-    <p> {{post.title}} </p>
-
-    {% endfor %}
-</div>
-{% endfor %}
-
-
-
-{% regroup object_list by category as post_list %}
-
-<ul>
-    {% for post_category in post_list %}
-    <li>{{ post_category.grouper }}
-        <ul>
-            {% for post in post_category.list %}
-            <li>{{ post.title }}</li>
-            {% endfor %}
-        </ul>
-    </li>
-    {% endfor %}
-</ul>

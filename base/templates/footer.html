@@ -1,5 +1,4 @@
 {% load static %}
-{% load ratings %}
 <footer>
     <div class="footer">
         <div class="footer__content">
@@ -20,9 +19,19 @@
 
 
             <div class="footer__content--item">
+                <h4>Related Sites</h4>
+                <ul>
+                    <li><a href="https://makueni.go.ke/">Government of Makueni County </a></li>
+                    <li><a href="https://makuenipsb.go.ke/">Makueni County Public Service Board </a></li>
+                    <li><a href="http://makueniassembly.go.ke/">County Assembly of Makueni  </a></li>
+                </ul>
+                <br>
+                
+            </div>
+            <div class="footer__content--item">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="{% url 'feedback' %}">Feedback</a></li>
+                    <li><a href="{% url 'contact' %}">Feedback</a></li>
                     <li><a href="{% url 'gallery' %}">Photo Gallery</a></li>
                     <li><a href="{% url 'faq' %}">FAQs</a></li>
                 </ul>
@@ -33,7 +42,7 @@
                 <form action="">
                     <div class="list">
                         <input type="radio" name="opinion" id="excelent">
-                        <label for="excelent">Excelent</label>
+                        <label for="excelent">Excellent</label>
                     </div>
                     <div class="list">
                         <input type="radio" name="opinion" id="average">

@@ -3,12 +3,12 @@ from .models import Project, ProjectCategory
 from base.models import CallToActionPanel, Subscription
 from base.forms import SubscriptionForm
 from resources.models import PubCategory
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 
 def projects_view(request, pk):
-    projects = Project.objects.filter(status=1, category=pk).all()
+    project_list = Project.objects.filter(status=1, category=pk).all()
     project_category = ProjectCategory.objects.all()
     project_category_in = ProjectCategory.objects.get(id=pk)
     publication_category = PubCategory.objects.all()
@@ -19,10 +19,16 @@ def projects_view(request, pk):
             form.save()
     form = SubscriptionForm()
 
-    paginator = Paginator(projects, 1) # Show 8 projects per page.
+    page = request.GET.get('page', 1)
+    paginator = Paginator(project_list, 8) # Show 8 projects per page.
 
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    try:
+        projects = paginator.page(page)
+    except PageNotAnInteger:
+       projects = paginator.page(1)
+    except EmptyPage:
+        projects = paginator.page(paginator.num_pages)
+    
 
     context = {
         'cta': cta,
@@ -31,7 +37,7 @@ def projects_view(request, pk):
         'project_category': project_category,
         'publication_category': publication_category,
         'project_category_in': project_category_in,
-        'page_obj': page_obj,
+        
     }
     return render(request, 'projects.html', context)
 
@@ -56,22 +62,4 @@ def project_detail_view(request, slug):
         
     }
     return render(request, 'project-detail.html', context)    
-
-
-# class ProjCategories(ListView):
-#     template_name = 'projects.html'
-#     model = ProjectCategory
-#     context_object_name = 'all_categs'
-
-#     def get_queryset(self):
-#        return Project.objects.all().select_related('category')
-
-#     def get_context_data(self):
-#         context = super(ProjCategories, self).get_context_data()
-#         context['projects'] = Project.objects.all()[:3]
-       
-#         return context
-
-#     # def get_success_url(self):
-#     #    return reverse('home') #add your path
 

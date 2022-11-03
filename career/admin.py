@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import JobAdvert, Tender
+from .models import JobAdvert, Tender, Service, SupplierRegistrationDetails, ContractAward, PrequalifiedTender
 
 
 class JobAdvertAdmin(SummernoteModelAdmin):
@@ -37,3 +37,8 @@ class TenderAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(JobAdvert, JobAdvertAdmin)
 admin.site.register(Tender, TenderAdmin)
+admin.site.register(ContractAward)
+admin.site.register(Service)
+admin.site.register(SupplierRegistrationDetails)
+admin.site.register(PrequalifiedTender)
+
