@@ -21,6 +21,7 @@ def contact_view(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            
     form = SubscriptionForm()
 
     # contact us form feedback

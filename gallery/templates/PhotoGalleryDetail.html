@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Gallery {% endblock title %}
+
+{% block body %}
+<section class="hero">
+    <div class="hero__title">
+        <h1>Home / Gallery</h1>
+    </div>
+</section>
+<div class="figureDetails">
+    <figure>
+        <img  src="{{ photo.image.url }} " alt="">
+        <figcaption>{{ photo.caption | safe }}</figcaption>
+    </figure>
+</div>
+
+  
+{% endblock body %}

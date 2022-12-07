@@ -9,91 +9,43 @@
     </div>
 </section>
 
-
 <div class="tabs">
     <div class="tabs__head">
         <span class="tabs__toggle is-active">Images</span>
         <span class="tabs__toggle">Videos</span>
-        
     </div>
     <div class="tabs__body">
+
+        <!-- Image content -->
         <div class="tabs__content is-active">
             <div class="tabs__media--container">
-                
                 {% for photo in photos %}
                 <div class="img">
-                    <img src="{{ photo.image.url }}" alt="" onclick="openFullMedia(this.src)">
+                    <a href="{% url 'PhotoGalleryDetails' photo.id  %}">
+                        <img src="{{ photo.image.url }}" alt="">
+                    </a>
                 </div>
                 {% endfor %}
-                
             </div>
-            {% for photo in photos %}
-            <!-- full image prieview -->
-            <div class="full__media--image" id="fullMediaBox">
-                
-                <img src="{{ photo.image.url }}" alt="" id="fullMedia">
-                
-                <div class="caption">
-                    <caption>{{ photo.caption | safe }}</caption>
-                </div>
-
-                <span onclick="closeFullMedia()"><i class="fa-solid fa-xmark"></i></span>
-           </div>
-           {% endfor %}
         </div>
 
+        <!-- Video content -->
         <div class="tabs__content">
-
             <div class="tabs__media--container">
                 {% for video in videos %}
                 <div class="video">
-                    <video src="{{ video.video.url }}"  onclick="openFullVideo(this.src)"></video>
+                    <a href="{% url 'VideoGalleryDetails' video.id %}">
+                        <video src="{{ video.video.url }} ">
+                            <source src="{{ video.video.url }}" type="video/mp4">
+                            <source src="{{ video.video.url }}" type="video/ogg">
+                            Your browser does not support the video tag.
+
+                        </video>
+                    </a>
                 </div>
-                
                 {% endfor %}
             </div>
-            
-            {% for video in videos %}
-            <!-- Full Video preview -->
-            <div class="full__media--image" id="fullVideoBox">
-    
-                <video src="Video.video.url " id="fullMedia" controls></video>
-
-                <div class="caption">
-                    <caption>{{ photo.caption | safe }}</caption>
-                </div>
-
-                <span onclick="closeFullVideo()"><i class="fa-solid fa-xmark"></i></span>
-           </div>
-           {% endfor %}
         </div>
-
-        
     </div>
 </div>
-<script>
-    var fullMediaBox = document.getElementById("fullMediaBox");
-    var fullMedia = document.getElementById("fullMedia");
-    var fullVideoBox = document.getElementById('fullVideoBox')
-
-    function openFullMedia(pic){
-        fullMediaBox.style.display = 'flex';
-        fullMedia.src = pic;
-    }
-
-    function openFullVideo(vid){
-        fullVideoBox.style.display = 'flex';
-        fullMedia.src = vid;
-    }
-
-    function closeFullMedia(){
-        fullMediaBox.style.display = 'none';
-    }
-
-    function closeFullVideo(){
-        fullVideoBox.style.display = 'none';
-    }
-
-    
-</script>
 {% endblock body %}

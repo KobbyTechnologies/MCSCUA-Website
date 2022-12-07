@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Gallery {% endblock title %}
+
+{% block body %}
+<section class="hero">
+    <div class="hero__title">
+        <h1>Video</h1>
+    </div>
+</section>
+<div class="figureDetails">
+    <figure>
+        <video src="{{ video.video.url }} " controls></video>
+        <figcaption>{{ video.caption | safe }}</figcaption>
+    </figure>
+</div>
+
+  
+{% endblock body %}

@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from .models import Faq, Publication, Terms, Privacy, PubCategory
 from blog.models import Post
 from base.forms import SubscriptionForm
 from projects.models import Project, ProjectCategory
+from .forms import CustomerSurveyForm, AuditServiceCharterForm
+from django.contrib import messages
 import os
 
 # Create your views here
@@ -76,6 +78,7 @@ def privacy(request):
     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
     publication_category = PubCategory.objects.all()
     project_category = ProjectCategory.objects.all()
+
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
         if form.is_valid():
@@ -88,3 +91,40 @@ def privacy(request):
         'project_category': project_category,
     }
     return render(request, 'privacy.html', context)
+
+def auditServiceView(request):
+
+    return render(request, 'audit_service.html')
+
+def customerSurvey(request):
+    project_category = ProjectCategory.objects.all()
+    publication_category = PubCategory.objects.all()
+
+    if request.method == 'POST':
+        form = SubscriptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            
+    form = SubscriptionForm()
+
+    if request.method == 'POST':
+        customer_survey = CustomerSurveyForm(request.POST)
+        if customer_survey.is_valid():
+            customer_survey.save()
+            messages.success(request, 'The Survey was submitted successfully.')
+            return redirect('contact')
+        else:
+            messages.error(request, 'Invalid form submission.')
+            messages.error(request, form.errors)
+    
+    customer_survey = CustomerSurveyForm()
+
+    context = {
+        'form': form,
+        'customer_survey': customer_survey,
+        'project_category': project_category,
+        'publication_category': publication_category,
+    }
+
+    return render(request, 'customer_request.html', context)
+

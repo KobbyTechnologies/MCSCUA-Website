@@ -94,8 +94,8 @@
                     {% for list in publication_category %}
                     <a href="{% url 'publication' list.id %}">{{ list.category }}</a>
                     {% endfor %}
-                    <!-- <a href="">Feedback Forms</a>
-                    <a href="">Application Forms</a> -->
+                    <a href="{% url 'auditServiceView' %}">Audit of Service Charter Form</a>
+                    <a href="{% url 'customerSurvey' %}">Customer Survey Form</a>
                 </div>
             </li>
             <li class="dropdown">
@@ -103,6 +103,7 @@
                 <div class="sub-menu">
                     <a href="{% url 'post' %}">Articles</a>
                     <a href="{% url 'gallery' %}">Gallery</a>
+                    <a href="{% url 'featuredarticles' %}">Featured Articless</a>
                     <a href="{% url 'faq' %}">FAQs</a>
                 </div>
             </li>

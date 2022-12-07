@@ -41,7 +41,8 @@ class Post(models.Model):
 
     @property
     def short_description(self):
-        return truncatechars(self.content, 20 )
+        return self.content, 20
+        # return truncatechars(self.content, 20)
 
     def blog_photo(self):
         return mark_safe('<img src="{}" width="150px" />'.format(self.image.url))
@@ -66,7 +67,7 @@ class Featured(models.Model):
 
     @property
     def short_description(self):
-        return truncatechars(self.title)
+        return (self.title)
 
 
     def photo(self):

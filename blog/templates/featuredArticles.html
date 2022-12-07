@@ -1,21 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Blog {% endblock title %}
+{% block title %} Featured Articles {% endblock title %}
 
 {% block body %}
 <section class="hero">
     <div class="hero__title">
-        <h1>Home / Blog</h1>
+        <h1>Featured Articles</h1>
     </div>
 </section>
-
 <div class="grid">
     <main class="grid__main">
         <div class="grid__main--item">
             <ul class="cards">
-                {% for post in post_list %}
+                {% for post in featured_list %}
                 <li class="card">
-                    <a href="{% url 'post_detail' post.slug  %}">
+                    <a href="{{ featured.url }}"  target="_blank">
 
                         <div class="card__img">
                             <div class="img__cover">
@@ -29,7 +28,7 @@
 
                             <p>{{ post.content |safe | truncatewords_html:20 }}</p>
                             <small>
-                                <span class="visuallyhidden">Uploaded | </span>
+                                <span class="visuallyhidden">Created | </span>
                                 {{ post.created_on | date }}
                             </small>
                         </div>
@@ -96,13 +95,3 @@
 
 
 {% endblock body %}
-
-<!-- page counter in django -->
-
-{% for page in page_obj.paginator.page_range %}
-
-{% if forloop.counter != 1 %} {% endif %}
-
-<a href="?page={{ page }}">{{ page }}</a>
-
-{% endfor %}
