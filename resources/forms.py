@@ -17,9 +17,9 @@ class AuditServiceCharterForm(ModelForm):
             'satisfaction',
             'license_payment_processing',
             'automated_license_system',
-            'response',
             'comments',
             'mode_of_response',
+            'response',
             'email',
         ]
 
