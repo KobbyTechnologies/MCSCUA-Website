@@ -16,6 +16,10 @@ import django_heroku
 import dj_database_url
 from decouple import config, Csv
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 MODE = config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
@@ -65,9 +69,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
-
+    
+    #Dependencies
     'django_summernote',
     'django_social_share',
+    'cloudinary',
+    
+    #Local Apps
     'base',
     'about',
     'contact',
@@ -165,3 +173,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
+
+
+cloudinary.config(
+    cloud_name = config('CLOUD_NAME'),
+    api_key = config('API_KEY'),
+    api_secret = config('API_SECRET'),
+    secure = True
+)
+

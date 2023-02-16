@@ -2,7 +2,8 @@ from django.utils.safestring import mark_safe
 from django.template.defaultfilters import truncatechars
 from django.db import models
 from blog.models import STATUS
-from datetime import datetime  
+from datetime import datetime 
+from cloudinary.models import CloudinaryField 
 
 # Create your models here.
 
@@ -18,8 +19,7 @@ class ChairPerson(models.Model):
     last_name = models.CharField(max_length=50)
     position = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
-    image = models.ImageField(upload_to='media',  null=True,
-                              blank=True, help_text='Image size should be in .jpg or .png')
+    image = CloudinaryField('image')
     category = models.IntegerField(
         choices=CATEGORY, default=0, help_text='select Peronel membership title')
     status = models.IntegerField(
@@ -57,8 +57,7 @@ class Personel(models.Model):
     last_name = models.CharField(max_length=50)
     position = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
-    image = models.ImageField(upload_to='media',  null=True,
-                              blank=True, help_text='Image size should be in .jpg or .png')
+    image = CloudinaryField('image')
     category = models.IntegerField(
         choices=CATEGORY, default=0, help_text='select Peronel membership title')
     status = models.IntegerField(
@@ -93,8 +92,7 @@ class ChairPerson(models.Model):
     last_name = models.CharField(max_length=50)
     position = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
-    image = models.ImageField(upload_to='media',  null=True,
-                              blank=True, help_text='Image size should be in .jpg or .png')
+    image = CloudinaryField('image')
     category = models.IntegerField(
         choices=CATEGORY, default=0, help_text='select Peronel membership title')
     status = models.IntegerField(
@@ -128,8 +126,7 @@ class MDsMessage(models.Model):
     title = models.CharField(
         max_length=200, help_text="e.g. John's Message", default='Message from the Managing Director')
     message = models.TextField()
-    image = models.ImageField(
-        upload_to='media', help_text='picture shoulde be at least 512px by 512px and either .jpg or .png')
+    image = CloudinaryField('image') 
     name_of_md = models.CharField(
         max_length=255, help_text='Write the full name')
     position = models.CharField(max_length=50, default='Managing Director')

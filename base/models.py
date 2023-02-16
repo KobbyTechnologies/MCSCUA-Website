@@ -2,13 +2,13 @@ from django.utils.safestring import mark_safe
 from django.template.defaultfilters import truncatechars
 from django.db import models
 from blog.models import STATUS
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
 
 class Carousel(models.Model):
-    image = models.ImageField(
-        upload_to='media', help_text='Image size should be 2646px X 1330px')
+    image = CloudinaryField('image')
     title = models.CharField(max_length=100, blank=True,
                              default='Our Sand, Our livelihood')
     caption = models.TextField(max_length=100, blank=True)
@@ -42,7 +42,7 @@ class Subscription(models.Model):
 
 class Patner(models.Model):
     name = models.CharField(max_length=100, primary_key=True, unique=True)
-    image = models.ImageField(upload_to='media')
+    image = CloudinaryField('image')
     caption = models.TextField(blank=True)
     url = models.URLField(max_length=200)
     status = models.IntegerField(
@@ -64,7 +64,7 @@ class Patner(models.Model):
 
 class CallToActionPanel(models.Model):
     title = models.CharField(max_length=200, primary_key=True)
-    image = models.ImageField(upload_to='media')
+    image = CloudinaryField('image')
     description = models.TextField(blank=True, null=True)
     url = models.URLField(blank=True, null=True)
     status = models.IntegerField(
@@ -92,7 +92,7 @@ class CallToActionPanel(models.Model):
 class Empowerment(models.Model):
     title = models.CharField(max_length=200)
     message = models.TextField()
-    image = models.ImageField(upload_to='media')
+    image = CloudinaryField('image')
     pub_date = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(
         choices=STATUS, default=0, help_text='change to published to show front end')

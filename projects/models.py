@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.safestring import mark_safe
 from django.template.defaultfilters import truncatechars
 from blog.models import STATUS
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -22,7 +23,7 @@ class ProjectCategory(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=500)
     description = models.TextField()
-    image = models.ImageField(upload_to='media')
+    image = CloudinaryField('image')
     slug = models.SlugField(max_length = 255, unique = True)
     category = models.ForeignKey(ProjectCategory, on_delete = models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)

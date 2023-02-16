@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.safestring import mark_safe
 from django.template.defaultfilters import truncatechars
 from blog.models import STATUS
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 

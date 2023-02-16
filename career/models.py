@@ -5,6 +5,7 @@ from django.template.defaultfilters import truncatechars
 from blog.models import STATUS
 from datetime import date
 from django_countries.fields import CountryField
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 

@@ -2,11 +2,11 @@ from django.utils.safestring import mark_safe
 from django.template.defaultfilters import truncatechars
 from django.db import models
 from blog.models import STATUS
-
+from cloudinary.models import CloudinaryField
 
 class PhotoGallery(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='media')
+    image = CloudinaryField('image')
     caption = models.TextField(blank=True)
     status = models.IntegerField(choices=STATUS, default=0,help_text = 'Change to Publish for it to be seen')
 
@@ -30,7 +30,7 @@ class PhotoGallery(models.Model):
 
 class VideoGallery(models.Model):
     title = models.CharField(max_length=200)
-    video = models.FileField(upload_to='media')
+    video = CloudinaryField('image')
     caption = models.TextField( blank=True)
     status = models.IntegerField(choices=STATUS, default=0,help_text = 'Change to Publish for it to be seen')
 
