@@ -82,25 +82,18 @@ BOOLEAN = [
 
 
 class CustomerSurvey(models.Model):
-    CHOICES = [
-        ('Very Good', 'Very Good'),
-        ('Good', 'Good'),
-        ('Average', 'Average'),
-        ('Below Average', 'Below Average'),
-        ('Poor', 'Poor'),
-        ('Very Poor', 'Very Poor'),
-    ]
-
-    organisation = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    title = models.CharField(max_length=200, blank=True)
+    organization = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, help_text='Name of Person(s) completing this form')
+    title = models.CharField(max_length=200, blank=True, help_text='Designation /job title, as applicable')
     date_created = models.DateField()
-    Quality = models.CharField(max_length=255, choices=CHOICES)
-    integrity = models.CharField(max_length=255, choices=CHOICES)
-    service_delivery = models.CharField(max_length=255, choices=CHOICES)
-    problem_solving = models.CharField(max_length=255, choices=CHOICES)
-    response = models.CharField(max_length=255, choices=CHOICES)
-    comments = models.TextField(blank=True)
+    Quality = models.CharField(max_length=255, help_text='Quality of our service')
+    integrity = models.CharField(max_length=255, help_text='Courtesy/honesty/integrity')
+    service_delivery = models.CharField(max_length=255, help_text='Service Delivery time')
+    problem_solving = models.CharField(max_length=255, help_text='Addressing issues/problems')
+    response = models.CharField(max_length=255, help_text='Communication/response')
+    comments = models.TextField(blank=True, help_text='Other relevant comments or information:')
+    mode_of_response = models.CharField(max_length=200, blank=True, help_text='How would you prefer receiving this questionnaire by email or other means?')
+    other = models.CharField(max_length=1000, blank=True, help_text='Kindly Specify')
     email= models.EmailField(blank=True)
 
     def __str__(self):
@@ -117,7 +110,7 @@ class AuditServiceCharter(models.Model):
     satisfaction = models.BooleanField(max_length=255, blank=True)
     license_payment_processing = models.CharField(max_length=255, blank=True)
     automated_license_system = models.BooleanField(blank=True)
-    response = models.CharField(max_length=255)
     comments = models.TextField(blank=True)
     mode_of_response = models.CharField(max_length=200, blank=True)
+    response = models.CharField(max_length=255, default='Other')
     email = models.EmailField(blank=True)

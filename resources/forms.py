@@ -17,9 +17,9 @@ class AuditServiceCharterForm(ModelForm):
             'satisfaction',
             'license_payment_processing',
             'automated_license_system',
-            'response',
             'comments',
             'mode_of_response',
+            'response',
             'email',
         ]
 
@@ -28,8 +28,9 @@ class CustomerSurveyForm(ModelForm):
     class Meta:
         model = CustomerSurvey
         fields = [
-            'organisation',
+            'organization',
             'name',
+            'title',
             'date_created',
             'Quality',
             'integrity',
@@ -37,6 +38,8 @@ class CustomerSurveyForm(ModelForm):
             'problem_solving',
             'response',
             'comments',
+            'mode_of_response',
+            'other',
             'email',
         ]
 
