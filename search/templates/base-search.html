@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} search {% endblock title %}
+
+
+{% block body %}
+<section class="hero">
+    <div class="hero__title">
+        <h1>Search</h1>
+    </div>
+</section>
+<div class="search__form container">
+    <form action="" method="get">
+        {{ search_form.as_p }}
+        <input type="submit" class="btn btn-primary" value="search">
+    </form>
+    <p>
+        {% with results.count as total_result %}
+        Found {{ total_result }} result{{total_result|pluralize}}
+        {% endwith %}
+    </p>
+    <div class="grid">
+        <main class="grid__main">
+            <div class="grid__main--item">
+                <div class="grid__main--list">
+                    <div class="publication">
+                        <div class="publication__main">
+                            <div class="publication__main--item">
+                                {% for post in results %}
+                                <div class="file__card">
+                                    <div class="file__card--name">
+                                        <h1>
+                                            <a href="{{ post.file.url }}" download="" target="_blank">
+                                                {{ post.name|truncatechars:50 }}
+                                            </a>
+                                        </h1>
+    
+                                        <div class="file__card--name-lower">
+                                            <p>
+                                                <i class="fa-solid fa-copy"></i> 1 File(s)
+                                            </p>
+                                            <p>
+                                                <i class="las la-database"></i> <span>{{ post.category }}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="file__card--icon">
+                                        <a href="{{ pub.file.url }}" download="" target="_blank" title="Download File">
+                                            <img src="{% static 'img/assets/pdf-icon.ico'%}" alt="">
+                                        </a>
+                                    </div>
+    
+    
+                                </div>
+                                {% empty %}
+                                    <p>No results Found</p> 
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+        </main>
+        <aside class="grid__sidebar">
+            {% include 'aside.html' %}
+        </aside>ext
+    </div>    
+</div>
+{% endblock %}

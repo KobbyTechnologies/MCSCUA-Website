@@ -1,6 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 from django.forms import ModelForm, Textarea, EmailInput, TextInput, Select
-from .models import Feedback
+from .models import Feedback, RateUs
 
 
 class FeedbackForm(ModelForm):
@@ -42,3 +42,9 @@ class FeedbackForm(ModelForm):
             }),
 
         }
+
+
+class RateUsForm(ModelForm):
+    class Meta:
+        model = RateUs
+        fields = ['rate', ]

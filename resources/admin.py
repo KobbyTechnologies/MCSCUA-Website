@@ -1,10 +1,7 @@
 from django.contrib import admin
-from resources.models import Faq, Publication, Privacy,Terms, PubCategory
+from resources import models
+from resources.models import Faq, Publication, Privacy,Terms, PubCategory, CustomerSurvey, AuditServiceCharter
 from django_summernote.admin import SummernoteModelAdmin
-
-
-class PublicationAdmin(admin.ModelAdmin):
-    list_display = ['name', ]
 
 
 class FaqAdmin(SummernoteModelAdmin):
@@ -27,3 +24,5 @@ admin.site.register(Faq, FaqAdmin)
 admin.site.register(Terms, TermsAdmin)
 admin.site.register(Privacy, PrivacyAdmin)
 admin.site.register(PubCategory)
+admin.site.register(CustomerSurvey)
+admin.site.register(AuditServiceCharter)

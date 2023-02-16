@@ -6,6 +6,7 @@ from resources.models import PubCategory
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView, DetailView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib import messages
 
 # Create your views here.
 class ProjectList(ListView):
@@ -31,6 +32,9 @@ def projects_view(request, pk):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
     form = SubscriptionForm()
 
     page = request.GET.get('page', 1)
@@ -66,6 +70,9 @@ def project_detail_view(request, slug):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
     form = SubscriptionForm()
     context = {
         'cta': cta,

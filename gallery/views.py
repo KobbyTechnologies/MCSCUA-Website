@@ -5,6 +5,7 @@ from.models import PhotoGallery, VideoGallery
 from base.forms import SubscriptionForm
 from projects.models import Project, ProjectCategory
 from resources.models import PubCategory
+from django.contrib import messages
 
 # Create your views here.
 
@@ -17,6 +18,10 @@ def gallery_view(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
+
     form = SubscriptionForm()
     context = {
         'photos': photo,

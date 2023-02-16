@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include('resources.urls')),
     path('', include('projects.urls')),
     path('', include('career.urls')),
+    path('', include('search.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('admin/', admin.site.urls),
 
@@ -37,7 +38,6 @@ urlpatterns = [
 
 handler403 = 'base.views.error_403'
 handler500 = 'base.views.error_500'
-
 handler404 = 'base.views.error_404'
 
 if settings.DEBUG:

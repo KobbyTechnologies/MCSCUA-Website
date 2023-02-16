@@ -7,6 +7,7 @@ from base.forms import SubscriptionForm
 from projects.models import ProjectCategory
 from resources.models import PubCategory
 from django.views import View
+from django.contrib import messages
 
 # Create your views here.
 
@@ -24,6 +25,9 @@ def about_view(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
     form = SubscriptionForm()
     context = {
         'about_us': about_us,
@@ -53,6 +57,9 @@ def boardOfDirectorsView(request):
             form = SubscriptionForm(request.POST)
             if form.is_valid():
                 form.save()
+                messages.success(request, 'subscription was submitted successfully.')
+            else:
+                messages.error(request, 'Invalid form submission.')
         form = SubscriptionForm()
     
         context = {
@@ -77,6 +84,9 @@ def ManagementView(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
     form = SubscriptionForm()
     context = {
         'post': post,
@@ -100,6 +110,10 @@ def departments_view(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
+
     form = SubscriptionForm()
     context = {
         'post': post,
@@ -120,6 +134,10 @@ def md_message_view(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
+
     form = SubscriptionForm()
     context = {
         'post': post,
@@ -142,6 +160,10 @@ def core_values(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
+
     form = SubscriptionForm()
     context = {
         'mission': mission,
@@ -165,6 +187,10 @@ def service_charter(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
+
     form = SubscriptionForm()
     context = {
         'cta': cta,
@@ -185,6 +211,9 @@ def strategic_plan(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
     form = SubscriptionForm()
     context = {
         'objectives': objectives,
@@ -205,6 +234,10 @@ def functions_view(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
+
     form = SubscriptionForm()
     context = {
         'cta': cta,
@@ -225,6 +258,9 @@ def strategic_plan_view(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
     form = SubscriptionForm()
     context = {
         'cta': cta,
