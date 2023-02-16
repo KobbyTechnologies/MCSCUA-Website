@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView
 from.models import PhotoGallery, VideoGallery
 from base.forms import SubscriptionForm
 from projects.models import Project, ProjectCategory

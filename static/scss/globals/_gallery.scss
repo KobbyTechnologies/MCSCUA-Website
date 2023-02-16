@@ -13,11 +13,15 @@
             z-index: 9999;
             flex-flow: column;
 
-            .caption{
-                background-color: white;
-                padding: 0.5em 1em;
+            .caption {
+                background: linear-gradient(0deg, black, #000000b8, transparent);
+                padding: 1.5em 1em;
                 margin-top: 0.5em;
                 max-width: 700px;
+                position: absolute;
+                bottom: 20px;
+                width: 100%;
+                color: white;
             }
 
             @supports (backdrop-filter: blur(1rem)) {

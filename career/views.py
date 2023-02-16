@@ -4,6 +4,7 @@ from .models import JobAdvert, Tender,  PrequalifiedTender, ContractAward
 from blog.models import Post
 from base.forms import SubscriptionForm
 from.forms import SupplierRegistrationForm
+from.forms import SupplierRegistrationForm
 from resources.models import PubCategory
 from projects.models import ProjectCategory
 
@@ -52,11 +53,21 @@ def tender_view(request):
     contract_award = ContractAward.objects.all()
     
     
+    prequalified_tender = PrequalifiedTender.objects.all()
+    contract_award = ContractAward.objects.all()
+    
+    
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
     form = SubscriptionForm()
+
+    if request.method == 'POST':
+        supplier_registration = SupplierRegistrationForm(request.POST)
+        if supplier_registration.is_valid():
+            form.save()
+    supplier_registration = SupplierRegistrationForm()
 
     if request.method == 'POST':
         supplier_registration = SupplierRegistrationForm(request.POST)
@@ -69,6 +80,9 @@ def tender_view(request):
         'form': form,
         'publication_category': publication_category,
         'project_category': project_category,
+        'supplier_registration': supplier_registration,
+        'prequalified_tender': prequalified_tender,
+        'contract_award': contract_award,
         'supplier_registration': supplier_registration,
         'prequalified_tender': prequalified_tender,
         'contract_award': contract_award,

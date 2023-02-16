@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Customer Request{% endblock title %}
+
+{% block body %}
+<section class="hero">
+    <div class="hero__title">
+        <h1> customer satisfaction survey</h1>
+    </div>
+</section>
+<section class="contact mt-1 mb-1">
+
+    <div class="contact__form">
+        {% include 'section/message.html' %}
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-control">
+                <label for="name"> Organisation </label>
+                {{ customer_survey.organisation }}
+            </div>
+            <div class="form-control">
+                <label for="name"> Name of person completing this form: </label>
+                {{ customer_survey.name }}
+            </div>
+            <div class="form-control">
+                <label for="name"> Designation/Job Title, as applicable: </label>
+                {{ customer_survey.organisation }}
+            </div>
+            <div class="form-control">
+                <label for="name"> Date: </label>
+                {{ customer_survey.date_created }}
+            </div>
+            <h3><i>Please rate our services by ticking on the level of your satisfaction for the various parameters provided.</i></h3>
+            <div class="form-control">
+                <p>1. Quality of our service </p>
+                <div class="input-group radio">
+                    {{ customer_survey.Quality }}
+                </div>
+                
+                
+            </div>
+
+            <div class="form-control">
+                <p>2. Courtesy/honesty/integrity</p>
+                <div class="input-group radio">
+                    <input type="radio" value="6" id="VeryGood" name="integrity" style="width: auto;">
+                    <label for="VeryGood">Very Good</label>
+
+                    <input type="radio" value="5" id="Good" name="integrity" style="width: auto;">
+                    <label for="Good">Good</label>
+
+                    <input type="radio" value="4" id="ageraged" name="integrity" style="width: auto;">
+                    <label for="average">Average</label>
+
+                    <input type="radio" value="3" id="belowAverage" name="integrity" style="width: auto;">
+                    <label for="belowAverage">Below Average</label>
+
+                    <input type="radio" value="2" id="poor" name="integrity" style="width: auto;">
+                    <label for="poor">Poor</label>
+                    
+                    <input type="radio" value="1" id="VeryPoor" name="integrity" style="width: auto;">
+                    <label for="VeryPoor">Very poor</label>
+                </div>
+                
+                
+            </div>
+
+            <div class="form-control">
+                <p>3. Service delivery time </p>
+                <div class="input-group radio">
+                    <input type="radio" value="6" id="VeryGood" name="delivery" style="width: auto;">
+                    <label for="VeryGood">Very Good</label>
+
+                    <input type="radio" value="5" id="Good" name="delivery" style="width: auto;">
+                    <label for="Good">Good</label>
+
+                    <input type="radio" value="4" id="ageraged" name="delivery" style="width: auto;">
+                    <label for="average">Average</label>
+
+                    <input type="radio" value="3" id="belowAverage" name="delivery" style="width: auto;">
+                    <label for="belowAverage">Below Average</label>
+
+                    <input type="radio" value="2" id="poor" name="delivery" style="width: auto;">
+                    <label for="poor">Poor</label>
+                    
+                    <input type="radio" value="1" id="VeryPoor" name="delivery" style="width: auto;">
+                    <label for="VeryPoor">Very poor</label>
+                </div>
+                
+                
+            </div>
+
+            <div class="form-control">
+                <p>4. Addressing issues/problems </p>
+                <div class="input-group radio">
+                    <input type="radio" value="6" id="VeryGood" name="issues" style="width: auto;">
+                    <label for="VeryGood">Very Good</label>
+
+                    <input type="radio" value="5" id="Good" name="issues" style="width: auto;">
+                    <label for="Good">Good</label>
+
+                    <input type="radio" value="4" id="ageraged" name="issues" style="width: auto;">
+                    <label for="average">Average</label>
+
+                    <input type="radio" value="3" id="belowAverage" name="issues" style="width: auto;">
+                    <label for="belowAverage">Below Average</label>
+
+                    <input type="radio" value="2" id="poor" name="issues" style="width: auto;">
+                    <label for="poor">Poor</label>
+                    
+                    <input type="radio" value="1" id="VeryPoor" name="issues" style="width: auto;">
+                    <label for="VeryPoor">Very poor</label>
+                </div>
+                
+                
+            </div>
+
+            <div class="form-control">
+                <p>5. Communication/response </p>
+              
+                <div class="input-group radio">
+                    <input type="radio" value="6" id="VeryGood" name="response" style="width: auto;">
+                    <label for="VeryGood">Very Good</label>
+
+                    <input type="radio" value="5" id="Good" name="response" style="width: auto;">
+                    <label for="Good">Good</label>
+
+                    <input type="radio" value="4" id="ageraged" name="response" style="width: auto;">
+                    <label for="average">Average</label>
+
+                    <input type="radio" value="3" id="belowAverage" name="response" style="width: auto;">
+                    <label for="belowAverage">Below Average</label>
+
+                    <input type="radio" value="2" id="poor" name="response" style="width: auto;">
+                    <label for="poor">Poor</label>
+                    
+                    <input type="radio" value="1" id="VeryPoor" name="response" style="width: auto;">
+                    <label for="VeryPoor">Very poor</label>
+                </div>
+                
+                
+            </div>
+
+
+            <div class="form-control">
+                <label for="name">Other relevant comments or information:</label>
+                <textarea></textarea>
+            </div>
+            <div class="form-control">
+                <p>Would you prefer receiving this questionnaire by email or other means?</p>
+                <div class="input-group radio">
+                    <input type="radio" id="email" name="feedback_option" style="width: auto;">
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-group radio">
+                    <input type="radio" id="other" name="feedback_option" style="width: auto;">
+                    <label for="other">other</label>
+                </div>
+            </div>
+            <div class="form-control">
+                <label for="name">if other Kindly specify:</label>
+                <input type="text" name="" value="">
+            </div>
+            <div class="form-control">
+                <label for="name">Your Email address</label>
+                <input type="email" name="" value="">
+            </div>
+
+           
+
+            <p><strong>Thank you for taking your time to fill this questionnaire</strong></p>
+
+
+
+            <button type="submit" class="btn btn-secondary"> Send</button>
+        </form>
+    </div>
+
+
+</section>
+
+{% endblock body %}

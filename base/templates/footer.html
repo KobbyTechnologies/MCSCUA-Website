@@ -34,6 +34,7 @@
                     <li><a href="{% url 'contact' %}">Feedback</a></li>
                     <li><a href="{% url 'gallery' %}">Photo Gallery</a></li>
                     <li><a href="{% url 'faq' %}">FAQs</a></li>
+
                 </ul>
             </div>
 
@@ -60,12 +61,12 @@
             <div class="footer__content--item">
                 <h4>Subscribe to our Newsletter</h4>
                 {% include 'section/message.html' %}
-                <form action="" method="post">
+                <form id="subscription_form" action="" method="post">
                     {% csrf_token %}
                     <div class="form-control">
                         {{ form.email }}
                     </div>
-                    <button class="btn btn-secondary">Subscribe</button>
+                    <button type="submit" class="btn btn-secondary">Subscribe</button>
                 </form>
 
             </div>

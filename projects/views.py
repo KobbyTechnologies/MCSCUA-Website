@@ -4,8 +4,22 @@ from base.models import CallToActionPanel, Subscription
 from base.forms import SubscriptionForm
 from resources.models import PubCategory
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView, DetailView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
+class ProjectList(ListView):
+    template_name = 'projects.html'
+    paginate_by: int = 1
+    queryset = Project.objects.filter(status=1).order_by('-pub_date')
+    context_object_name = 'projects_alt'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectList, self).get_context_data(**kwargs)
+        context['publication_category'] = PubCategory.objects.all()
+        context['project_category'] = ProjectCategory.objects.all()
+        context['cta'] = CallToActionPanel.objects.filter(status=1)[:1]
+        return context
 
 def projects_view(request, pk):
     project_list = Project.objects.filter(status=1, category=pk).all()

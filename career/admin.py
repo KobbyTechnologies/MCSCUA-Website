@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import JobAdvert, Tender, Service, SupplierRegistrationDetails, ContractAward, PrequalifiedTender
+from .models import JobAdvert, Tender, Service, SupplierRegistrationDetails, ContractAward, PrequalifiedTender, Service, SupplierRegistrationDetails, ContractAward, PrequalifiedTender
 
 
 class JobAdvertAdmin(SummernoteModelAdmin):

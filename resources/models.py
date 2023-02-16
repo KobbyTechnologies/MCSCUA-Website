@@ -74,3 +74,46 @@ class Terms(models.Model):
 
     def __str__(self):
         return self.title
+
+BOOLEAN = [
+    ('Yes', 'Yes'),
+    ('No', 'No')
+]
+
+
+class CustomerSurvey(models.Model):
+    CHOICES = [
+        ('Very Good', 'Very Good'),
+        ('Good', 'Good'),
+        ('Average', 'Average'),
+        ('Below Average', 'Below Average'),
+        ('Poor', 'Poor'),
+        ('Very Poor', 'Very Poor'),
+    ]
+
+    organisation = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    date_created = models.DateField()
+    Quality = models.CharField(max_length=255, choices=CHOICES)
+    integrity = models.CharField(max_length=255, choices=CHOICES)
+    service_delivery = models.CharField(max_length=255, choices=CHOICES)
+    problem_solving = models.CharField(max_length=255, choices=CHOICES)
+    response = models.CharField(max_length=255, choices=CHOICES)
+    comments = models.TextField(blank=True)
+    email= models.EmailField()
+
+    def __str__(self):
+        return self.name
+
+class AuditServiceCharter(models.Model):
+    organisation = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    date_created = models.DateField()
+    receipt_issue = models.CharField(max_length=255)
+    complaint_log = models.CharField(max_length=255)
+    complaint_address = models.CharField(max_length=255)
+    satisfaction = models.CharField(max_length=255)
+    licence_payment_processing = models.CharField(max_length=255)
+    automated_licence_system = models.CharField(max_length=255)
+    response = models.CharField(max_length=255)
+    comments = models.TextField(blank=True)

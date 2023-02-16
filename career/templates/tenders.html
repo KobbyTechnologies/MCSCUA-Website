@@ -169,35 +169,35 @@
             </div>
             <div class="grid__main--list">
                 {% if tender %}
-
                 {% for tender in tender %}
-                <div class="grid__main--tender">
-                    <div class="description">
-                        <ul class="top">
+                <div class="description">
+                    <ul class="top">
                         <li>{{ tender.title }}</li>
                         <li>Deadline: <span>{{tender.deadline | date }}</span></li>
-                        </ul>
-                        <ul class="bottom">
-                            <li>Tender Reference No: <span>{{ tender.ref_number }}</span></li>
-                            <li>Status <span>{{ tender.tender_status }}</span></li>
-                            <li>
-                                <div class="desc-btn">
-                                    <a href="{{ tender.file.url }}" download="">Download</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
+                    </ul>
+                    <ul class="bottom">
+                        <li>Tender Reference No: <span>{{ tender.ref_number }}</span></li>
+                        <li>Status <span>{{ tender.tender_status }}</span></li>
+                        <li>
+                            <div class="desc-btn">
+                                <a href="{{ tender.file.url }}" download="">Download</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+
+
                 {% endfor %}
                 {% else %}
-                <p>Thank you for your inquiry about Tender opportunities at Makueni County Sand Conservation and Utilization Authority. <br> <br> Currently, we do not have any open tenders, but keep checking for future opportunities.</p>
+                <p>Thank you for your inquiry about Tender opportunities at Makueni County Sand Conservation and
+                    Utilization Authority. <br> <br> Currently, we do not have any open tenders, but keep checking for
+                    future opportunities.</p>
                 {% endif %}
 
             </div>
 
             <!-- end tender listing  -->
-            
+
         </div>
 
     </main>

@@ -27,6 +27,15 @@
             </div>
             <div class="easy-contact-info">
                 <!-- <span>Email Us</span> -->
+                <p> P.O BOX 183 - 90300 Makuen</p>
+            </div>
+        </li>
+        <li>
+            <div class="easy-contact-icon">
+                <span><i class="fa-solid fa-map"></i></span>
+            </div>
+            <div class="easy-contact-info">
+                <!-- <span>Email Us</span> -->
                 <p> P.O BOX 183 - 90300 Makueni</p>
             </div>
         </li>
@@ -94,8 +103,8 @@
                     {% for list in publication_category %}
                     <a href="{% url 'publication' list.id %}">{{ list.category }}</a>
                     {% endfor %}
-                    <!-- <a href="">Feedback Forms</a>
-                    <a href="">Application Forms</a> -->
+                    <a href="{% url 'auditServiceView' %}">Audit of Service Charter Form</a>
+                    <a href="{% url 'customerSurvey' %}">Customer Survey Form</a>
                 </div>
             </li>
             <li class="dropdown">
@@ -104,6 +113,7 @@
                     <a href="{% url 'post' %}">Articles</a>
                     <a href="{% url 'featuredarticles' %}">Featured Articles</a>
                     <a href="{% url 'gallery' %}">Gallery</a>
+                    <a href="{% url 'featuredarticles' %}">Featured Articless</a>
                     <a href="{% url 'faq' %}">FAQs</a>
                 </div>
             </li>
