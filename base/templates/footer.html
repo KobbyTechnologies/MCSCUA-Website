@@ -80,7 +80,7 @@
     </div>
 
     <div class="copyright ">
-        <p>&copy; 2022 Makueni County Sand Conservation & Utilization Authority.</p>
+        <p>copyright &copy;<span id="copyright-year">2020</span> Makueni County Sand Conservation & Utilization Authority.</p>
         <ul>
             <li>
                 <a href="{% url 'privacy' %}">Privacy Policy</a>
@@ -99,3 +99,7 @@
     </div>
 
 </footer>
+
+<script>
+    document.querySelector('#copyright-year').innerText = new Date().getFullYear();
+</script>

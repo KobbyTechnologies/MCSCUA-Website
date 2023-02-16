@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Featured Articles {% endblock title %}
+
+{% block body %}
+<section class="hero">
+    <div class="hero__title">
+        <h1>Featured Articles</h1>
+    </div>
+</section>
+<div class="grid">
+    <main class="grid__main">
+        <div class="grid__main--item">
+            <ul class="cards">
+                {% for post in featured_list %}
+                <li class="card">
+                    <a href="{{ post.url }}"  target="_blank">
+
+                        <div class="card__img">
+                            <div class="img__cover">
+                                <img src="{{ post.image.url }}" alt="" />
+                            </div>
+                        </div>
+                        <div class="[ card__text ] [ flow ]">
+                            <h2>
+                                <span>{{ post.title }}</span>
+                            </h2>
+
+                            <p>{{ post.content |safe | truncatewords_html:20 }}</p>
+                            <small>
+                                <span class="visuallyhidden">Created | </span>
+                                {{ post.created_on | date }}
+                            </small>
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+
+        <div class="">
+            {% if is_paginated %}
+            <div class="pagination">
+
+                <div class="nav-links">
+
+                    {% if page_obj.has_previous %}
+                    <a class="page-numbers" href="?page=1">&laquo; First</a>
+                    <a class="page-numbers" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <a class="page-numbers current" href="?page={{ page_obj.current_page_number }}"> Page
+                        {{ page_obj.number}} of {{page_obj.paginator.num_pages}} </a>
+
+                    {% if page_obj.has_next %}
+                    <a class="page-numbers" href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
+                    <a class="page-numbers" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% else %}
+                    <a class="page-numbers current" href="?page={{ page_obj.paginator.num_pages }}">Last </a>
+                    {% endif %}
+                </div>
+
+            </div>
+            {% endif %}
+        </div>
+
+
+
+    </main>
+    <aside class="grid__sidebar">
+        <h1>A Future Where People & Nature Thrive</h1>
+        <p>As an organization we are keen on sustainable conservation and utilization of sand within Makueni County. We
+            enhance community’s knowledge on importance of environmental protection and sustainable sand utilization
+            through public barazas and partner other organizations in construction of sand dams. Makueni County has an
+            effective framework to oversee sand activities thus serves as a case study for how other counties can
+            ameliorate illegal sand harvesting.</p>
+        <hr class="my-1">
+
+
+        <div class="bloggrid__sidebar--categories">
+            <h1>Quick Links</h1>
+
+            <ul class="Category__list">
+                <li><a href="{% url 'tender' %}">TENDER &raquo;</a></li>
+                <li><a href="{% url 'career' %}">Career/Vacancies &raquo;</a></li>
+                <li><a href="{% url 'faq' %}">FAQs &raquo;</a></li>
+                <li><a href="{% url 'post' %}">Articles &raquo;</a></li>
+            </ul>
+        </div>
+
+    </aside>
+</div>
+
+
+
+{% endblock body %}

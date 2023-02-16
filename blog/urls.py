@@ -4,4 +4,5 @@ from .import views
 urlpatterns = [
     path('articles', views.PostList.as_view(), name='post'),
     path('articles/<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
+    path('featuredarticles', views.FeaturedList.as_view(), name='featuredarticles'),
 ]

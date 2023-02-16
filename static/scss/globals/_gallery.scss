@@ -49,3 +49,29 @@
 
     }
 }
+
+.figureDetails {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    figure {
+        width: 100%;
+        max-width: 1000px;
+        padding: 1em;
+
+        img,
+        video {
+            width: 100%;
+        }
+
+        figcaption {
+            position: relative;
+            background: black;
+            width: 100%;
+            color: white;
+            margin-block-start: -1em;
+            padding: 5px;
+        }
+    }
+}

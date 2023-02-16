@@ -8,6 +8,8 @@ from .forms import SubscriptionForm
 from projects.models import Project, ProjectCategory
 from resources.models import PubCategory
 
+from django.contrib import messages
+
 # Create your views here.
 
 def error_404(request, exception):
@@ -26,7 +28,7 @@ def index_view(request):
     patners = Patner.objects.filter(status=1).all()
     cta = CallToActionPanel.objects.filter(status=1)[:1]
     empowerment = Empowerment.objects.filter(status=1)[:1]
-    featured = Featured.objects.filter(status=1).order_by('-created_on')[:6]
+    featured = Featured.objects.filter(status=1).order_by('-created_on')[:3]
     category_names = 'Sand_Dams Check_Dams Garbions'.split()
     publication_category = PubCategory.objects.all()
     project_category = ProjectCategory.objects.all()
@@ -36,6 +38,7 @@ def index_view(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'The Request was submitted successfully.')
     form = SubscriptionForm()
     context = {
         'carousel': carousel,

@@ -21,25 +21,26 @@ def contact_view(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'The Request was submitted successfully.')
     form = SubscriptionForm()
 
     # contact us form feedback
     if request.method == 'POST':
         form2 = FeedbackForm(request.POST)
         if form2.is_valid():
-            subject = form2.cleaned_data['subject']
-            body = {
-                'Name': form2.cleaned_data['name'],
-                'Email': form2.cleaned_data['email'],
-                'Type': form2.cleaned_data['type'],
-                'Message': form2.cleaned_data['message'],
-            }
-            message = "\n".join(body)
-            try:
-                send_mail(subject, message, 'admin@example.com',
-                          ['admin@example.com'])
-            except:
-                return HttpResponse('Invalid header found.')
+            # subject = form2.cleaned_data['subject']
+            # body = {
+            #     'Name': form2.cleaned_data['name'],
+            #     'Email': form2.cleaned_data['email'],
+            #     'Type': form2.cleaned_data['type'],
+            #     'Message': form2.cleaned_data['message'],
+            # }
+            # message = "\n".join(body)
+            # try:
+            #     send_mail(subject, message, 'admin@example.com',
+            #               ['admin@example.com'])
+            # except:
+            #     return HttpResponse('Invalid header found.')
             form2.save()
             messages.success(request, 'The Request was submitted successfully.')
             return redirect('contact')

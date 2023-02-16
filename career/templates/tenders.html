@@ -8,7 +8,153 @@
         <h1>Home / Tenders</h1>
     </div>
 </section>
+<div class="tabs">
+    <div class="tabs__head">
+        <span class="tabs__toggle is-active">Ongoing Tenders</span>
+        <span class="tabs__toggle">Contract Awards</span>
+        <span class="tabs__toggle">Existing Suppliers</span>
+        <span class="tabs__toggle">Supplier Registration Form</span>
 
+    </div>
+    <div class="tabs__body">
+        <div class="tabs__content is-active">
+            <div class="tabs__media--container">
+                {% if tender %}
+                {% for tender in tender %}
+                <div class="description">
+                    <ul class="top">
+                        <li>{{ tender.title }}</li>
+                        <li>Deadline: <span>{{tender.deadline | date }}</span></li>
+                    </ul>
+                    <ul class="bottom">
+                        <li>Tender Reference No: <span>{{ tender.ref_number }}</span></li>
+                        <li>Status <span>{{ tender.tender_status }}</span></li>
+                        <li>
+                            <div class="desc-btn">
+                                <a href="{{ tender.file.url }}" download="">Download</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                {% endfor %}
+                {% else %}
+                <p>Thank you for your inquiry about Tender opportunities at Makueni County Sand Conservation and
+                    Utilization Authority. <br> <br> Currently, we do not have any open tenders, but keep checking for
+                    future opportunities.</p>
+                {% endif %}
+
+            </div>
+
+
+        </div>
+
+        <div class="tabs__content">
+
+            <div class="tabs__media--container">
+                <div class="publication">
+                    <div class="publication__main">
+                        <div class="publication__main--item">
+                            {% for pub in contract_award %}
+                            <div class="file__card">
+                                <div class="file__card--name">
+                                    <h1>
+                                        <a href="{{ pub.file.url }}" download="" target="_blank">
+                                            {{ pub.title }}
+                                        </a>
+                                    </h1>
+
+                                    <div class="file__card--name-lower">
+                                        <p>
+                                            <i class="fa-solid fa-copy"></i> 1 File(s)
+                                        </p>
+                                        <p>
+                                            <i class="las la-database"></i> <span>{{ pub.category }}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="file__card--icon">
+                                    <a href="{{ pub.file.url }}" download="" target="_blank" title="Download File">
+                                        <img src="{% static 'img/assets/pdf-icon.ico'%}" alt="">
+                                    </a>
+                                </div>
+
+
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="tabs__content">
+
+            <div class="tabs__media--container">
+                <div class="publication">
+                    <div class="publication__main">
+                        <div class="publication__main--item">
+                            {% for pub in prequalified_tender %}
+                            <div class="file__card">
+                                <div class="file__card--name">
+                                    <h1>
+                                        <a href="{{ pub.file.url }}" download="" target="_blank">
+                                            {{ pub.title }}
+                                        </a>
+                                    </h1>
+
+                                    <div class="file__card--name-lower">
+                                        <p>
+                                            <i class="fa-solid fa-copy"></i> 1 File(s)
+                                        </p>
+                                        <p>
+                                            <i class="las la-database"></i> <span>{{ pub.category }}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="file__card--icon">
+                                    <a href="{{ pub.file.url }}" download="" target="_blank" title="Download File">
+                                        <img src="{% static 'img/assets/pdf-icon.ico'%}" alt="">
+                                    </a>
+                                </div>
+
+
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="tabs__content">
+
+            <div class="tabs__media--container">
+                {% include 'section/message.html' %}
+
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-control">
+                        {{ supplier_registration }}
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary"> Submit Registration</button>
+                </form>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock body %}
 <div class="grid">
     <main class="grid__main">
         <div class="grid__main--item">
@@ -59,5 +205,3 @@
         {% include 'aside.html' %}
     </aside>
 </div>
-
-{% endblock body %}
