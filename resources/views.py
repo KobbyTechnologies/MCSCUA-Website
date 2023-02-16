@@ -21,6 +21,9 @@ def reports_view(request, pk):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
     form = SubscriptionForm()
     context = {
         'pub': publication,
@@ -43,6 +46,9 @@ def faq_view(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
     form = SubscriptionForm()
     context = {
         
@@ -63,6 +69,9 @@ def terms(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'subscription was submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
     form = SubscriptionForm()
     context = {
         'terms': terms,
@@ -83,6 +92,9 @@ def privacy(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
     form = SubscriptionForm()
     context = {
         'privacy': privacy,
@@ -93,8 +105,33 @@ def privacy(request):
     return render(request, 'privacy.html', context)
 
 def auditServiceView(request):
+    project_category = ProjectCategory.objects.all()
+    publication_category = PubCategory.objects.all()
+    form = SubscriptionForm()
+    if request.method == 'POST':
+        form = SubscriptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
 
-    return render(request, 'audit_service.html')
+    AuditCharterForm = AuditServiceCharterForm()
+    
+    if request.method == 'POST':
+        AuditCharterForm = AuditServiceCharterForm(request.POST)
+        if AuditCharterForm.is_valid():
+            AuditCharterForm.save()
+            messages.success(request, 'Submitted successfully')
+        else:
+            messages.success(request, 'Invalid form submission.')
+    context = {
+        'AuditCharterForm': AuditCharterForm,
+        'form': form,
+        'project_category': project_category,
+        'publication_category': publication_category,
+    }
+    return render(request, 'audit_service.html', context)
 
 def customerSurvey(request):
     project_category = ProjectCategory.objects.all()
@@ -104,18 +141,20 @@ def customerSurvey(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
-            
+            messages.success(request, 'submitted successfully.')
+        else:
+            messages.error(request, 'Invalid form submission.')
     form = SubscriptionForm()
 
     if request.method == 'POST':
         customer_survey = CustomerSurveyForm(request.POST)
         if customer_survey.is_valid():
             customer_survey.save()
-            messages.success(request, 'The Survey was submitted successfully.')
-            return redirect('contact')
+            messages.success(request, 'submitted successfully.')
+            return redirect('customerSurvey')
         else:
             messages.error(request, 'Invalid form submission.')
-            messages.error(request, form.errors)
+            print(form.errors)
     
     customer_survey = CustomerSurveyForm()
 

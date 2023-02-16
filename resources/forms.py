@@ -7,7 +7,20 @@ class AuditServiceCharterForm(ModelForm):
     class Meta:
         model = AuditServiceCharter
         fields = [
-
+            'organization',
+            'name',
+            'title',
+            'date_created',
+            'receipt_issue',
+            'complaint_log',
+            'complaint_address',
+            'satisfaction',
+            'license_payment_processing',
+            'automated_license_system',
+            'response',
+            'comments',
+            'mode_of_response',
+            'email',
         ]
 
 
@@ -27,29 +40,46 @@ class CustomerSurveyForm(ModelForm):
             'email',
         ]
 
-
         widgets = {
+
             'organisation': TextInput(attrs={
 
             }),
 
-            'name':TextInput(attrs={
+            'name': TextInput(attrs={
                 'placeholder': 'Your Full Name'
             }),
 
-            'date_created':DateInput(
+            'date_created': DateInput(
                 attrs={
                     'type': 'date'
                 }
             ),
-            'Quality':RadioSelect(
+            'Quality': RadioSelect(
                 attrs={
-                    'style':'display:flex'
+                    'style': 'display:flex'
                 }
             ),
-            'integrity':RadioSelect(),
-            'service_delivery':RadioSelect(),
-            'problem_solving':RadioSelect(),
-            'response':RadioSelect(),
-            'comments':Textarea(),
+            'integrity': RadioSelect(
+                attrs={
+                    'style': 'display:flex'
+                }
+            ),
+            'service_delivery': RadioSelect(
+                attrs={
+                    'style': 'display:flex'
+                }
+            ),
+            'problem_solving': RadioSelect(
+                attrs={
+                    'style': 'display:flex'
+                }
+            ),
+            'response': RadioSelect(
+                attrs={
+                    'style': 'display:flex'
+                }
+            ),
+            'comments': Textarea(),
+            'email': EmailInput()
         }

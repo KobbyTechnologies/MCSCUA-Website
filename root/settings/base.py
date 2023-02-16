@@ -29,6 +29,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django.contrib.postgres',
+    
     'django_summernote',
     'star_ratings',
     'django_social_share',
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     'resources',
     'projects',
     'career',
+    'search',
 ]
 
 

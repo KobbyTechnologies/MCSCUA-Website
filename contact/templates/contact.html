@@ -38,7 +38,6 @@
 <section class="contact mt-1 mb-1">
 
     <div class="contact__form">
-        {% include 'section/message.html' %}
 
         <form action="" method="post">
             {% csrf_token %}
@@ -48,6 +47,7 @@
                     {{ form2.type }}
                 </div>
             </div>
+            
             <div class="form-control">
                 <label for="name"> Name: </label>
                 {{ form2.name }}
