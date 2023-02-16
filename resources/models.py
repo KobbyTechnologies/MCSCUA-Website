@@ -93,6 +93,7 @@ class CustomerSurvey(models.Model):
 
     organisation = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
+    title = models.CharField(max_length=200, blank=True)
     date_created = models.DateField()
     Quality = models.CharField(max_length=255, choices=CHOICES)
     integrity = models.CharField(max_length=255, choices=CHOICES)
@@ -100,20 +101,23 @@ class CustomerSurvey(models.Model):
     problem_solving = models.CharField(max_length=255, choices=CHOICES)
     response = models.CharField(max_length=255, choices=CHOICES)
     comments = models.TextField(blank=True)
-    email= models.EmailField()
+    email= models.EmailField(blank=True)
 
     def __str__(self):
         return self.name
 
 class AuditServiceCharter(models.Model):
-    organisation = models.CharField(max_length=255)
+    organization = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
+    title = models.CharField(max_length=200)
     date_created = models.DateField()
     receipt_issue = models.CharField(max_length=255)
     complaint_log = models.CharField(max_length=255)
     complaint_address = models.CharField(max_length=255)
-    satisfaction = models.CharField(max_length=255)
-    licence_payment_processing = models.CharField(max_length=255)
-    automated_licence_system = models.CharField(max_length=255)
+    satisfaction = models.BooleanField(max_length=255, blank=True)
+    license_payment_processing = models.CharField(max_length=255, blank=True)
+    automated_license_system = models.BooleanField(blank=True)
     response = models.CharField(max_length=255)
     comments = models.TextField(blank=True)
+    mode_of_response = models.CharField(max_length=200, blank=True)
+    email = models.EmailField(blank=True)
