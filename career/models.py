@@ -125,74 +125,6 @@ class SupplierRegistrationDetails(models.Model):
     KRA_pin = models.CharField(max_length=255)
     company_email = models.CharField(max_length=255)
     company_phone = models.CharField(max_length=255)
-    country = models.CharField(max_length=255)
-    physical_address = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    postal_address = models.CharField(max_length=255)
-    postal_code = models.CharField(max_length=255)
-    services = models.ManyToManyField(Service)
-    full_name  = models.CharField(max_length=255)
-    mobile_number = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
-    company_certificate_reg = models.FileField()
-    KRA_pin_certificate = models.FileField()
-    KRA_compliance_certificate = models.FileField()
-    company_memorandum_directors_page = models.FileField()
-    pub_date = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.company_name
-
-
-
-class ContractAward(models.Model):
-    title = models.CharField(
-        max_length=255, default='Contract Awards [year]', help_text='At the [year] replace with the tendering year')
-    ref_number = models.CharField(max_length=255, unique=True)
-    file = models.FileField()
-    pub_date = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField()
-    status = models.IntegerField(
-        choices=STATUS, default=0, help_text='Change to Publish for it to be seen')
-
-    def __str__(self):
-        return self.ref_number
-
-
-class PrequalifiedTender(models.Model):
-    title = models.CharField(
-        max_length=255, default='MSCSUA Pre-Qualified Suppliers [year]', help_text='At the [year] replace with the tendering year')
-    ref_number = models.CharField(max_length=255, unique=True)
-    file = models.FileField()
-    pub_date = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField()
-    status = models.IntegerField(
-        choices=STATUS, default=0, help_text='Change to Publish for it to be seen')
-
-    def __str__(self):
-        return self.ref_number
-
-class Service(models.Model):
-    title = models.CharField(max_length= 255)
-    status = models.IntegerField(
-        choices=STATUS, default=0, help_text='Change to Publish for it to be seen')
-
-    def __str__(self):
-        return self.title
-
-
-class SupplierRegistrationDetails(models.Model):
-    OWNERSHIP = [
-        ('Kenyan', 'Kenyan'),
-        ('Multi-National majority owned by Kenyan', 'Multi-National majority owned by Kenyan'),
-        ('Multi-National Others', 'Multi-National Others'),
-    ]
-    
-    ownership = models.CharField(max_length= 512, choices=OWNERSHIP)
-    company_name = models.CharField(max_length=255)
-    KRA_pin = models.CharField(max_length=255)
-    company_email = models.CharField(max_length=255)
-    company_phone = models.CharField(max_length=255)
     country = CountryField()
     physical_address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
@@ -210,6 +142,5 @@ class SupplierRegistrationDetails(models.Model):
 
     def __str__(self):
         return self.company_name
-
 
 
