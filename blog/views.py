@@ -64,31 +64,4 @@ class FeaturedList(ListView):
         context['project_category'] = ProjectCategory.objects.all()
         context['form'] = SubscriptionForm()
 
-    if request.method == 'POST':  # form was submitted
-
-        # <input type="text" name="keywords">
-        keywords = request.POST.get("keywords", "")
-        all_queries = None
-        search_fields = ('title', 'content', 'resume')  # change accordingly
-        # keywords are splitted into words (eg: john science library)
-        for keyword in keywords.split(' '):
-            keyword_query = None
-            for field in search_fields:
-                each_query = Q(**{field + '__icontains': keyword})
-                if not keyword_query:
-                    keyword_query = each_query
-                else:
-                    keyword_query = keyword_query | each_query
-                    if not all_queries:
-                        all_queries = keyword_query
-                    else:
-                        all_queries = all_queries & keyword_query
-
-        articles = Post.objects.filter(all_queries).distinct()
-        context = {'articles': articles}
-        return render(request, 'search.html', context)
-
-    else:  # no data submitted
-
-        context = {}
-        return render(request, 'index.html', context)
+        return context
