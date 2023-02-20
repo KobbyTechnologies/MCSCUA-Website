@@ -39,7 +39,7 @@
 
     <div class="contact__form">
 
-        <form action="" method="post">
+        <form action="{% url 'feedback' %}" method="post">
             {% csrf_token %}
             <div class="form-control">
                 <label for="response"> Response options: </label>

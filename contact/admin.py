@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Feedback
+from .models import Feedback, RateUs
 
 
 class FeedbackAdmin(admin.ModelAdmin):
@@ -13,3 +13,4 @@ class FeedbackAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Feedback, FeedbackAdmin)
+admin.site.register(RateUs)
