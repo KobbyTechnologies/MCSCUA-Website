@@ -40,17 +40,18 @@
 
             <div class="footer__content--item opinion-poll">
                 <h4>Rate our Services</h4>
-                <form action="">
+                <form action="{% url 'rate-us' %}" method="post">
+                    {% csrf_token %}
                     <div class="list">
-                        <input type="radio" name="opinion" id="excelent">
+                        <input type="radio" name="rate" id="excelent" value="Excellent">
                         <label for="excelent">Excellent</label>
                     </div>
                     <div class="list">
-                        <input type="radio" name="opinion" id="average">
+                        <input type="radio" name="rate" id="average" value="Average">
                         <label for="average">Average</label>
                     </div>
                     <div class="list">
-                        <input type="radio" name="opinion" id="poor">
+                        <input type="radio" name="rate" id="poor" value="Poor">
                         <label for="poor">poor</label>
                     </div>
                     <button class="btn btn-white" type="submit">Results</button>
@@ -60,7 +61,7 @@
 
             <div class="footer__content--item">
                 <h4>Subscribe to our Newsletter</h4>
-                <form id="subscription_form" action="" method="post">
+                <form id="subscription_form" action="{% url 'subscription' %}" method="post">
                     {% csrf_token %}
                     <div class="form-control">
                         {{ form.email }}

@@ -14,3 +14,4 @@ venv/
 SSMS/
 vs.mcj-1209684039/
 VSRemoteControl/
+__pycache__/
