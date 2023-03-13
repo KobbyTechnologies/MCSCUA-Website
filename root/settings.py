@@ -52,7 +52,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost',
-                 'makueni-sand-authotiry.herokuapp.com', '20.87.45.223', 'https://www.makuenisandauthority.go.ke/']
+                 'makueni-sand-authotiry.herokuapp.com', 'https://www.makuenisandauthority.go.ke/']
 
 
 # Application definition
@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
 
     'django_summernote',
+    'django_social_share',
     'base',
     'about',
     'contact',

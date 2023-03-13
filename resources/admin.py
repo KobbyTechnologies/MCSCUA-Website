@@ -22,35 +22,10 @@ class PublicationAdmin(admin.ModelAdmin):
     list_display = ['name', 'category', 'status']
 
 
-class AuditServiceCharterAdmin(admin.ModelAdmin):
-    list_display = ['name', 'title', 'organization', 'date_created']
-    list_filter = ['date_created']
-    search_fields = ['organization', 'name', 'title']
-    readonly_fields = [
-        'organization',
-        'name',
-        'title',
-        'date_created',
-        'receipt_issue',
-        'complaint_log',
-        'complaint_address',
-        'satisfaction',
-        'license_payment_processing',
-        'automated_license_system',
-        'response',
-        'comments',
-        'mode_of_response',
-        'email',
-    ]
-
-    def has_add_permission(self, request, obj=None):
-        return False
-
-
 class CustomerSurveyAdmin(admin.ModelAdmin):
-    list_display = ['name', 'title', 'organization', 'date_created']
-    list_filter = ['date_created']
-    search_fields = ['organization', 'name', 'title']
+    list_display = ['organization', 'name', 'title', 'date_created',]
+    list_filter = ['date_created',]
+    search_fields = ['organization', 'name']
     readonly_fields = [
         'organization',
         'name',
@@ -63,12 +38,34 @@ class CustomerSurveyAdmin(admin.ModelAdmin):
         'response',
         'comments',
         'mode_of_response',
-        'mode_of_response_type',
+        'other',
         'email',
     ]
 
     def has_add_permission(self, request, obj=None):
         return False
+
+
+class AuditServiceCharterAdmin(admin.ModelAdmin):
+    list_display = ['organization', 'name', 'title', 'date_created',]
+    list_filter = ['date_created',]
+    search_fields = ['organization', 'name']
+    readonly_fields = [
+        'organization',
+        'name',
+        'title',
+        'date_created',
+        'receipt_issue',
+        'complaint_log',
+        'complaint_address',
+        'satisfaction',
+        'license_payment_processing',
+        'automated_license_system',
+        'comments',
+        'mode_of_response',
+        'response',
+        'email'
+    ]
 
 
 # Register your models here.
