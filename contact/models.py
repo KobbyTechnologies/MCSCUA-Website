@@ -24,9 +24,9 @@ class Feedback(models.Model):
 
 class RateUs(models.Model):
     RATE_CHOICES = [
-        (0, 'Excellent'),
-        (1, 'Average'),
-        (2, 'Poor')
+        ('Excellent', 'Excellent'),
+        ('Average', 'Average'),
+        ('Poor', 'Poor')
     ]
 
     rate = models.IntegerField(choices=RATE_CHOICES)
