@@ -6,6 +6,7 @@ from base.forms import SubscriptionForm
 from projects.models import Project, ProjectCategory
 from resources.models import PubCategory
 from django.contrib import messages
+from blog.models import Category, Post
 
 # Create your views here.
 
@@ -13,6 +14,7 @@ def gallery_view(request):
     photo = PhotoGallery.objects.filter(status=1).all()
     video = VideoGallery.objects.filter(status=1).all()
     project_category = ProjectCategory.objects.all()
+    post_category = Category.objects.all()
     publication_category = PubCategory.objects.all()
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
@@ -29,6 +31,7 @@ def gallery_view(request):
         'form': form,
         'project_category': project_category,
         'publication_category': publication_category,
+        'post_category': post_category,
     }
     return render(request, 'gallery.html', context)
 

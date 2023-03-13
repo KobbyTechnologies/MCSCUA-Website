@@ -808,7 +808,7 @@ textarea {
     padding-block: min(15vh, 10rem);
     transform: translateX(100%);
     transition: transform 400ms ease-in-out;
-    background-color: hsla(0deg, 0%, 0%, 0.815);
+    background-color: hsla(0, 0%, 0%, 0.815);
     color: rgb(255, 255, 255);
     border-color: rgb(255, 255, 255);
   }
@@ -963,7 +963,7 @@ textarea {
     right: 2rem;
     z-index: 9999;
     cursor: pointer;
-    background-color: hsla(0deg, 0%, 0%, 0.815);
+    background-color: hsla(0, 0%, 0%, 0.815);
     color: rgb(255, 255, 255);
     border-color: rgb(255, 255, 255);
   }
@@ -978,7 +978,7 @@ textarea {
   }
   @supports ((-webkit-backdrop-filter: blur(1rem)) or (backdrop-filter: blur(1rem))) {
     .mobile-nav-toggle {
-      background-color: hsla(0deg, 0%, 100%, 0.5);
+      background-color: hsla(0, 0%, 100%, 0.5);
       color: #333333;
       border-color: #333333;
       -webkit-backdrop-filter: blur(1rem);
@@ -1800,7 +1800,7 @@ textarea {
   height: 100%;
 }
 .paralax__inner .backdrop {
-  background-color: hsla(0deg, 0%, 0%, 0.705);
+  background-color: hsla(0, 0%, 0%, 0.705);
   padding: 2em;
 }
 @media (min-width: 1024px) {

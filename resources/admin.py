@@ -2,6 +2,7 @@ from django.contrib import admin
 from resources import models
 from resources.models import Faq, Publication, Privacy, Terms, PubCategory, CustomerSurvey, AuditServiceCharter
 from django_summernote.admin import SummernoteModelAdmin
+from import_export.admin import ExportActionMixin
 
 
 class FaqAdmin(SummernoteModelAdmin):
@@ -22,10 +23,10 @@ class PublicationAdmin(admin.ModelAdmin):
     list_display = ['name', 'category', 'status']
 
 
-class CustomerSurveyAdmin(admin.ModelAdmin):
-    list_display = ['organization', 'name', 'title', 'date_created',]
-    list_filter = ['date_created',]
-    search_fields = ['organization', 'name']
+class AuditServiceCharterAdmin(ExportActionMixin, admin.ModelAdmin):
+    list_display = ['name', 'title', 'organization', 'date_created']
+    list_filter = ['date_created']
+    search_fields = ['organization', 'name', 'title']
     readonly_fields = [
         'organization',
         'name',
@@ -46,7 +47,7 @@ class CustomerSurveyAdmin(admin.ModelAdmin):
         return False
 
 
-class AuditServiceCharterAdmin(admin.ModelAdmin):
+class AuditServiceCharterAdmin(ExportActionMixin, admin.ModelAdmin):
     list_display = ['organization', 'name', 'title', 'date_created',]
     list_filter = ['date_created',]
     search_fields = ['organization', 'name']

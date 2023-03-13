@@ -29,4 +29,9 @@ class RateUs(models.Model):
         ('Poor', 'Poor')
     ]
 
-    rate = models.IntegerField(choices=RATE_CHOICES)
+    rate = models.CharField(max_length=50, choices=RATE_CHOICES)
+
+    
+
+    def __str__(self):
+        return self.rate

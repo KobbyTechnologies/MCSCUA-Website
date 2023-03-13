@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load social_share %}
 
 {% block body %}
 <section class="hero mb-1">
@@ -26,6 +26,13 @@
                     <p><small>Share on:</small></p>
                     <div class="social-link">
                         <ul>
+                            <li>{% post_to_facebook object_or_url link_class='fa-brands fa-facebook-square' link_text=' ' %}</li>
+                            <li>
+                                {% post_to_twitter "Article: {{object.title}}. Check it out!" object_or_url link_class='fa-brands fa-twitter' link_text=' ' %}
+                            </li>
+                            <li>
+                                {% post_to_linkedin object_or_url link_class='fa-brands fa-linkedin' %}
+                            </li>
                             <li><a href=""><i class="fa-brands fa-facebook-square"></i></a></li>
                             <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
                             <li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
@@ -93,7 +100,9 @@
                 <li><a href="{% url 'career' %}">Career/Vacancies &raquo;</a></li>
                 <li><a href="{% url 'faq' %}">FAQs &raquo;</a></li>
                 <li><a href="{% url 'contact' %}">Feedback form &raquo;</a></li>
-                <li><a href="{% url 'post' %}">Articles &raquo;</a></li>
+                {% for list in post_category %}
+                <li><a href="{% url 'post' list.id %}">{{ list.name}} &raquo;</a></li>    
+                {% endfor %}
             </ul>
         </div>
 

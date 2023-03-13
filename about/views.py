@@ -1,6 +1,6 @@
 
 from django.shortcuts import render,redirect
-from blog.models import Post
+from blog.models import Post, Category
 from .models import MDsMessage, AboutUs,ChairPerson, Mission, Personel, Department, Functions, Objectives, Vision,ServiceCharter, CoreValues
 from base.models import CallToActionPanel
 from base.forms import SubscriptionForm
@@ -17,7 +17,7 @@ def about_view(request):
     mission = Mission.objects.filter(status=1)[:1]
     leader = Personel.objects.filter(status=1, category=1).all()
     cta = CallToActionPanel.objects.filter(status=1)[:1]
-   
+    post_category = Category.objects.all()
     project_category = ProjectCategory.objects.all()
     publication_category = PubCategory.objects.all()
     vision = Vision.objects.filter(status=1)
@@ -41,6 +41,7 @@ def about_view(request):
         'form': form,
         'project_category': project_category,
         'publication_category': publication_category,
+        'post_category': post_category,
     }
     return render(request, 'about.html', context)
 
@@ -48,6 +49,7 @@ def about_view(request):
 def boardOfDirectorsView(request):
     try:
         post = Post.objects.filter(status=1).order_by('-created_on')[:4]
+        post_category = Category.objects.all()
         board_member = Personel.objects.filter(status=1, category=0).all()
         project_category = ProjectCategory.objects.all()
         publication_category = PubCategory.objects.all()
@@ -69,6 +71,7 @@ def boardOfDirectorsView(request):
             'form': form,
             'project_category': project_category,
             'publication_category': publication_category,
+            'post_category': post_category,
         }
     except Exception as e:
         print (e)
@@ -77,6 +80,7 @@ def boardOfDirectorsView(request):
 
 def ManagementView(request):
     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
+    post_category = Category.objects.all()
     board_member = Personel.objects.filter(status=1, category=1).all()
     project_category = ProjectCategory.objects.all()
     publication_category = PubCategory.objects.all()
@@ -94,6 +98,7 @@ def ManagementView(request):
         'form': form,
         'project_category': project_category,
         'publication_category': publication_category,
+        'post_category': post_category,
     }
 
     return render(request, 'management.html', context)
@@ -103,6 +108,7 @@ def ManagementView(request):
 
 def departments_view(request):
     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
+    post_category = Category.objects.all()
     project_category = ProjectCategory.objects.all()
     department = Department.objects.filter(status=1).all()
     publication_category = PubCategory.objects.all()
@@ -121,12 +127,14 @@ def departments_view(request):
         'form': form,
         'project_category': project_category,
         'publication_category': publication_category,
+        'post_category': post_category,
     }
     return render(request, 'departments.html', context)
 
 
 def md_message_view(request):
     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
+    post_category = Category.objects.all()
     message = MDsMessage.objects.filter(status=1)[:1]
     project_category = ProjectCategory.objects.all()
     publication_category = PubCategory.objects.all()
@@ -145,11 +153,13 @@ def md_message_view(request):
         'form': form,
         'project_category': project_category,
         'publication_category': publication_category,
+        'post_category': post_category,
     }
     return render(request, 'md-message.html', context)
 
 
 def core_values(request):
+    post_category = Category.objects.all()
     mission = Mission.objects.filter(status=1)
     vision = Vision.objects.filter(status=1)
     core_values = CoreValues.objects.filter(status=1)
@@ -173,12 +183,14 @@ def core_values(request):
         'project_category': project_category,
         'publication_category': publication_category,
         'core_values': core_values,
+        'post_category': post_category,
     }
 
     return render(request, 'core-values.html', context)
 
 
 def service_charter(request):
+    post_category = Category.objects.all()
     charter = ServiceCharter.objects.filter(status=1).all()
     cta = CallToActionPanel.objects.filter(status=1)[:1]
     project_category = ProjectCategory.objects.all()
@@ -198,11 +210,13 @@ def service_charter(request):
         'form': form,
         'project_category': project_category,
         'publication_category': publication_category,
+        'post_category': post_category,
     }
     return render(request, 'service-chater.html', context)
 
 
 def strategic_plan(request):
+    post_category = Category.objects.all()
     objectives = Objectives.objects.filter(status=1).order_by('-created_on')[:1]
     cta = CallToActionPanel.objects.filter(status=1)[:1]
     project_category = ProjectCategory.objects.all()
@@ -221,11 +235,13 @@ def strategic_plan(request):
         'form': form,
         'project_category': project_category,
         'publication_category': publication_category,
+        'post_category': post_category,
     }
     return render(request, 'strategic-plan.html', context)
 
 
 def functions_view(request):
+    post_category = Category.objects.all()
     functions = Functions.objects.filter(status=1)
     cta = CallToActionPanel.objects.filter(status=1)[:1]
     project_category = ProjectCategory.objects.all()
@@ -245,11 +261,13 @@ def functions_view(request):
         'form': form,
         'project_category': project_category,
         'publication_category': publication_category,
+        'post_category': post_category,
     }
     return render(request, 'functions.html', context)
 
 
 def strategic_plan_view(request):
+    post_category = Category.objects.all()
     objectives = Objectives.objects.filter(status=1).order_by('-created_on')[:1]
     cta = CallToActionPanel.objects.filter(status=1)[:1]
     project_category = ProjectCategory.objects.all()
@@ -268,5 +286,6 @@ def strategic_plan_view(request):
         'form': form,
         'project_category': project_category,
         'publication_category': publication_category,
+        'post_category': post_category,
     }
     return render(request, 'strategic-plan.html', context)

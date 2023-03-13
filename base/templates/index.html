@@ -116,7 +116,7 @@
                 </div>
                 <div class="[ card__text ] [ flow ]">
                     <h2>
-                        <span>{{ post.title }}</span>
+                        <span>{{ post.title | truncatewords_html:7 }}</span>
                     </h2>
 
                     <p>{{ post.content |safe | truncatewords_html:20 }}</p>
