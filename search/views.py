@@ -21,19 +21,11 @@ def post_search(request):
             vector = SearchVector('name', 'category')
             query = SearchQuery(q)
 
-<<<<<<< HEAD
-            results = Publication.objects.annotate(rank = SearchRank(vector, query),).order_by('-rank')
-            
-            
-            results = Publication.objects.annotate(similarity = TrigramSimilarity('name', q),).filter(similarity__gte = 0.1).order_by('-similarity')
-            # results = Publication.objects.annotate(distance = TrigramDistance('name', q),).filter(distance__lte = 0.8).order_by('distance')
-=======
             # results = Publication.objects.annotate(rank = SearchRank(vector, query),).order_by('-rank')
             
             
             # results = Publication.objects.annotate(similarity = TrigramSimilarity('name', q),).filter(similarity__gte = 0.1).order_by('-similarity')
             results = Publication.objects.annotate(distance = TrigramDistance('name', q),).filter(distance__lte = 0.8).order_by('distance')
->>>>>>> 4dc5d065a42dc5f9c9dab361a63d516864fa8271
 
     ctx = {
         'search_form': search_form,
