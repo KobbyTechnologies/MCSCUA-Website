@@ -24,9 +24,12 @@ class Feedback(models.Model):
 
 class RateUs(models.Model):
     RATE_CHOICES = [
-        (0, 'Excellent'),
-        (1, 'Average'),
-        (2, 'Poor')
+        ('Excellent', 'Excellent'),
+        ('Average', 'Average'),
+        ('Poor', 'Poor')
     ]
 
-    rate = models.IntegerField(choices=RATE_CHOICES)
+    rate = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.rate

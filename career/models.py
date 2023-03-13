@@ -144,4 +144,3 @@ class SupplierRegistrationDetails(models.Model):
         return self.company_name
 
 
-
