@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
 
     'django_summernote',
+    'django_social_share',
     'base',
     'about',
     'contact',

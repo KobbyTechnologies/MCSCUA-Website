@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.template import loader
 from base.models import Carousel, Patner, CallToActionPanel, Empowerment
-from blog.models import Post, Featured
+from blog.models import Post, Featured, Category
 from .forms import SubscriptionForm
 from projects.models import Project, ProjectCategory
 from resources.models import PubCategory
@@ -25,6 +25,7 @@ def error_500(request, * args, ** argv):
 def index_view(request):
     carousel = Carousel.objects.order_by('-created_on').filter(status=1)[:7]
     post = Post.objects.order_by('-created_on')[:4]
+    post_category = Category.objects.all()
     patners = Patner.objects.filter(status=1).all()
     cta = CallToActionPanel.objects.filter(status=1)[:1]
     empowerment = Empowerment.objects.filter(status=1)[:1]
@@ -50,7 +51,8 @@ def index_view(request):
         'featured': featured,
         'publication_category': publication_category,
         'project_category': project_category,
-        'projects': projects
+        'projects': projects,
+        'post_category': post_category,
     }
     template = loader.get_template('index.html')
     return HttpResponse(template.render(context, request))

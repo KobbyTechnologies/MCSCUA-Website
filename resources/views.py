@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from .models import Faq, Publication, Terms, Privacy, PubCategory
-from blog.models import Post
+from blog.models import Post,Category
 from base.forms import SubscriptionForm
 from projects.models import Project, ProjectCategory
 from .forms import CustomerSurveyForm, AuditServiceCharterForm
@@ -17,6 +17,7 @@ def reports_view(request, pk):
     publication = Publication.objects.filter(status=1, category=pk).all()
     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
     project_category = ProjectCategory.objects.all()
+    post_category = Category.objects.all()
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
         if form.is_valid():
@@ -32,6 +33,7 @@ def reports_view(request, pk):
         'publication_category': publication_category,
         'publication_category_in': publication_category_in,
         'project_category': project_category,
+        'post_category': post_category,
     }
     return render(request, 'reports.html', context)
 
@@ -41,6 +43,7 @@ def faq_view(request):
     faq = Faq.objects.filter(status=1).all()
     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
     publication_category = PubCategory.objects.all()
+    post_category = Category.objects.all()
     project_category = ProjectCategory.objects.all()
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
@@ -56,6 +59,7 @@ def faq_view(request):
         'post': post,
         'form': form,
         'project_category': project_category,
+        'post_category': post_category,
     }
     return render(request, 'faq.html', context)
 
@@ -63,6 +67,7 @@ def faq_view(request):
 def terms(request):
     terms = Terms.objects.filter(status=1).all()
     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
+    post_category = Category.objects.all()
     publication_category = PubCategory.objects.all()
     project_category = ProjectCategory.objects.all()
     if request.method == 'POST':
@@ -78,6 +83,7 @@ def terms(request):
         'post': post,
         'form': form,
         'project_category': project_category,
+        'post_category': post_category,
     }
     return render(request, 'terms.html', context)
 
@@ -85,6 +91,7 @@ def terms(request):
 def privacy(request):
     privacy = Privacy.objects.filter(status=1).all()
     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
+    post_category = Category.objects.all()
     publication_category = PubCategory.objects.all()
     project_category = ProjectCategory.objects.all()
 
@@ -101,12 +108,14 @@ def privacy(request):
         'post': post,
         'form': form,
         'project_category': project_category,
+        'post_category': post_category,
     }
     return render(request, 'privacy.html', context)
 
 def auditServiceView(request):
     project_category = ProjectCategory.objects.all()
     publication_category = PubCategory.objects.all()
+    post_category = Category.objects.all()
     form = SubscriptionForm()
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
@@ -130,12 +139,14 @@ def auditServiceView(request):
         'form': form,
         'project_category': project_category,
         'publication_category': publication_category,
+        'post_category': post_category,
     }
     return render(request, 'audit_service.html', context)
 
 def customerSurvey(request):
     project_category = ProjectCategory.objects.all()
     publication_category = PubCategory.objects.all()
+    post_category = Category.objects.all()
 
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
@@ -163,6 +174,7 @@ def customerSurvey(request):
         'customer_survey': customer_survey,
         'project_category': project_category,
         'publication_category': publication_category,
+        'post_category': post_category,
     }
 
     return render(request, 'customer_request.html', context)

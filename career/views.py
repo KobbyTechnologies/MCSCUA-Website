@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import JobAdvert, Tender,  PrequalifiedTender, ContractAward
-from blog.models import Post
+from blog.models import Post, Category
 from base.forms import SubscriptionForm
 from.forms import SupplierRegistrationForm
 from.forms import SupplierRegistrationForm
@@ -24,6 +24,7 @@ class CareerList(ListView):
             status=1).order_by('-created_on')[:4]
         context['publication_category'] = PubCategory.objects.all()
         context['project_category'] = ProjectCategory.objects.all()
+        context['post_category'] = Category.objects.all()
         context['form'] = SubscriptionForm()
 
         return context
@@ -39,6 +40,7 @@ class careerDetail(DetailView):
             status=1).order_by('created_on')[:4]
         context['publication_category'] = PubCategory.objects.all()
         context['project_category'] = ProjectCategory.objects.all()
+        context['post_category'] = Category.objects.all()
         context['form'] = SubscriptionForm()
 
         return context
@@ -47,6 +49,7 @@ class careerDetail(DetailView):
 def tender_view(request):
     tender = Tender.objects.filter(status=1).all()
     post = Post.objects.filter(status=1).order_by('-created_on')[:4]
+    post_category = Category.objects.all()
     publication_category = PubCategory.objects.all()
     project_category = ProjectCategory.objects.all()
     prequalified_tender = PrequalifiedTender.objects.all()
@@ -86,5 +89,6 @@ def tender_view(request):
         'supplier_registration': supplier_registration,
         'prequalified_tender': prequalified_tender,
         'contract_award': contract_award,
+        'post_category': post_category
     }
     return render(request, 'tenders.html', context)

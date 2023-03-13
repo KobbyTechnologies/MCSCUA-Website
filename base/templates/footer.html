@@ -23,10 +23,10 @@
                 <ul>
                     <li><a href="https://makueni.go.ke/">Government of Makueni County </a></li>
                     <li><a href="https://makuenipsb.go.ke/">Makueni County Public Service Board </a></li>
-                    <li><a href="http://makueniassembly.go.ke/">County Assembly of Makueni  </a></li>
+                    <li><a href="http://makueniassembly.go.ke/">County Assembly of Makueni </a></li>
                 </ul>
                 <br>
-                
+
             </div>
             <div class="footer__content--item">
                 <h4>Quick Links</h4>
@@ -40,22 +40,25 @@
 
             <div class="footer__content--item opinion-poll">
                 <h4>Rate our Services</h4>
-                <form action="{% url 'rate-us' %}" method="post">
+                <form class="formReset" action="{% url 'rate-us' %}" method="post">
                     {% csrf_token %}
                     <div class="list">
-                        <input type="radio" name="rate" id="excelent" value="Excellent">
+                        <input type="radio" name="rate" id="excelent" value="Excellent" required>
                         <label for="excelent">Excellent</label>
                     </div>
                     <div class="list">
-                        <input type="radio" name="rate" id="average" value="Average">
+                        <input type="radio" name="rate" id="average" value="Average" required>
                         <label for="average">Average</label>
                     </div>
                     <div class="list">
-                        <input type="radio" name="rate" id="poor" value="Poor">
+                        <input type="radio" name="rate" id="poor" value="Poor" required>
                         <label for="poor">poor</label>
                     </div>
-                    <button class="btn btn-white" type="submit">Results</button>
+                    <button class="btn btn-white btnSend" type="submit">Results</button>
                 </form>
+
+
+
 
             </div>
 
@@ -64,7 +67,7 @@
                 <form id="subscription_form" action="{% url 'subscription' %}" method="post">
                     {% csrf_token %}
                     <div class="form-control">
-                        {{ form.email }}
+                        <input type="email" name="email" id="email" placeholder="info@example.com">
                     </div>
                     <button type="submit" class="btn btn-secondary">Subscribe</button>
                 </form>
@@ -81,7 +84,8 @@
     </div>
 
     <div class="copyright ">
-        <p>copyright &copy;<span id="copyright-year">2020</span> Makueni County Sand Conservation & Utilization Authority.</p>
+        <p>copyright &copy;<span id="copyright-year">2020</span> Makueni County Sand Conservation & Utilization
+            Authority.</p>
         <ul>
             <li>
                 <a href="{% url 'privacy' %}">Privacy Policy</a>
@@ -101,6 +105,72 @@
 
 </footer>
 
+
 <script>
     document.querySelector('#copyright-year').innerText = new Date().getFullYear();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    // jquery function
+    $(document).ready(function () {
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [{% for data in rate %}'{{data.rate}}',{% endfor %}],
+        datasets: [{
+            label: '% rating',
+            data: [{% for data in rate %}{{ data.count }}, {% endfor %}],
+        backgroundColor: [
+        'rgba(255, 99, 132, 0.9)',
+        'rgba(54, 162, 235, 0.9)',
+        'rgba(255, 206, 86, 0.9)',
+        'rgba(75, 192, 192, 0.9)',
+        'rgba(153, 102, 255, 0.9)',
+        'rgba(255, 159, 64, 0.9)'
+    ],
+        borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+    ],
+        borderWidth: 1
+                    }]
+                },
+        options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+            });
+        });
+
+
+
+    $(".formReset").on("click", "button.btnSend", function () {
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Successful process',
+            text: 'The form was submitted successfully!',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showCancelButton: false,
+            showConfirmButton: true,
+            confirmButtonColor: '#2651be',
+            confirmButtonText: `ok`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('.formReset')[0].reset();
+            }
+        });
+    });
 </script>

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Blog {% endblock title %}
+{% block title %} {{post_category.name}} {% endblock title %}
 
 {% block body %}
 <section class="hero">
     <div class="hero__title">
-        <h1>Home / Blog</h1>
+        <h1>Home / {{post_category.id}}</h1>
     </div>
 </section>
 
@@ -24,7 +24,7 @@
                         </div>
                         <div class="[ card__text ] [ flow ]">
                             <h2>
-                                <span>{{ post.title }}</span>
+                                <span>{{ post.title |truncatewords_html:7 }}</span>
                             </h2>
 
                             <p>{{ post.content |safe | truncatewords_html:20 }}</p>
@@ -84,9 +84,11 @@
 
             <ul class="Category__list">
                 <li><a href="{% url 'tender' %}">TENDER &raquo;</a></li>
-                <li><a href="{% url 'career' %}">Career/Vacancies &raquo;</a></li>
+                <li><a href="{% url 'career' %}">Career/V144acancies &raquo;</a></li>
                 <li><a href="{% url 'faq' %}">FAQs &raquo;</a></li>
-                <li><a href="{% url 'post' %}">Articles &raquo;</a></li>
+                {% for list in post_category %}
+                <li><a href="{% url 'post' list.id %}">{{ list.name}} &raquo;</a></li>    
+                {% endfor %}
             </ul>
         </div>
 

@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from .forms import PostSearchForm
+from blog.models import Category
 from resources.models import Publication
 
 from django.contrib.postgres.search import SearchVector, SearchQuery,SearchRank, TrigramSimilarity, TrigramDistance
 
 # Create your views here.
 def post_search(request):
+    post_category = Category.objects.all()
     search_form = PostSearchForm
 
     results = []
@@ -30,6 +32,7 @@ def post_search(request):
     ctx = {
         'search_form': search_form,
         'results': results,
+        'post_category': post_category,
         # 'q': q,
     }
     return render(request, 'base-search.html', ctx)

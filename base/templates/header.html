@@ -110,7 +110,9 @@
             <li class="dropdown">
                 <a>Media Hub<i class="las la-angle-down"></i></a>
                 <div class="sub-menu">
-                    <a href="{% url 'post' %}">Articles</a>
+                    {% for list in post_category %}
+                    <a href="{% url 'post' list.id %}">{{ list.name}}</a>
+                    {% endfor %}
                     <a href="{% url 'featuredarticles' %}">Featured Articles</a>
                     <a href="{% url 'gallery' %}">Gallery</a>
                     <a href="{% url 'faq' %}">FAQs</a>

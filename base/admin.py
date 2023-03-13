@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django_summernote.admin import SummernoteModelAdmin
 from base.models import Carousel, Patner, Subscription, CallToActionPanel, Empowerment
-
+from import_export.admin import ExportActionMixin
 
 class CarouselAdmin(admin.ModelAdmin):
     fields = (
@@ -19,6 +19,7 @@ class CarouselAdmin(admin.ModelAdmin):
         'short_description',
         'status',
         'created_on',
+        
     ]
     list_display_links = ['title']
     list_filter = ['status', 'created_on']
@@ -61,7 +62,7 @@ class EmpowermentAdmin(admin.ModelAdmin):
     list_filter = ['pub_date']
 
 
-class SubscriptionAdmin(admin.ModelAdmin):
+class SubscriptionAdmin(ExportActionMixin,admin.ModelAdmin):
 
     def has_add_permission(self, request, obj=None):
         return False
