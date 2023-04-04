@@ -39,8 +39,50 @@ class CustomerSurveyForm(ModelForm):
             'response',
             'comments',
             'mode_of_response',
-            'mode_of_response_type',
+            'other',
             'email',
         ]
 
-    
+        widgets = {
+
+            'organisation': TextInput(attrs={
+
+            }),
+
+            'name': TextInput(attrs={
+                'placeholder': 'Your Full Name'
+            }),
+
+            'date_created': DateInput(
+                attrs={
+                    'type': 'date'
+                }
+            ),
+            'Quality': RadioSelect(
+                attrs={
+                    'style': 'display:flex'
+                }
+            ),
+            'integrity': RadioSelect(
+                attrs={
+                    'style': 'display:flex'
+                }
+            ),
+            'service_delivery': RadioSelect(
+                attrs={
+                    'style': 'display:flex'
+                }
+            ),
+            'problem_solving': RadioSelect(
+                attrs={
+                    'style': 'display:flex'
+                }
+            ),
+            'response': RadioSelect(
+                attrs={
+                    'style': 'display:flex'
+                }
+            ),
+            'comments': Textarea(),
+            'email': EmailInput()
+        }

@@ -115,7 +115,6 @@ def privacy(request):
 def auditServiceView(request):
     project_category = ProjectCategory.objects.all()
     publication_category = PubCategory.objects.all()
-    post_category = Category.objects.all()
     form = SubscriptionForm()
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
@@ -139,7 +138,6 @@ def auditServiceView(request):
         'form': form,
         'project_category': project_category,
         'publication_category': publication_category,
-        'post_category': post_category,
     }
     return render(request, 'audit_service.html', context)
 
