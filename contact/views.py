@@ -19,43 +19,8 @@ from django.http import JsonResponse
 def contact_view(request):
     project_category = ProjectCategory.objects.all()
     publication_category = PubCategory.objects.all()
-
-    #  subscription form feedback
-    if request.method == 'POST':
-        form = SubscriptionForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'submitted successfully.')
-    else:
-        messages.error(request, 'Invalid form submission.')
-            
+    post_category = Category.objects.all()
     form = SubscriptionForm()
-
-    # contact us form feedback
-    if request.method == 'POST':
-        form2 = FeedbackForm(request.POST)
-        if form2.is_valid():
-            # subject = form2.cleaned_data['subject']
-            # body = {
-            #     'Name': form2.cleaned_data['name'],
-            #     'Email': form2.cleaned_data['email'],
-            #     'Type': form2.cleaned_data['type'],
-            #     'Message': form2.cleaned_data['message'],
-            # }
-            # message = "\n".join(body)
-            # try:
-            #     send_mail(subject, message, 'admin@example.com',
-            #               ['admin@example.com'])
-            # except:
-            #     return HttpResponse('Invalid header found.')
-            # form2.save()
-            messages.success(request, 'submitted successfully.')
-            return redirect('contact')
-        else:
-            messages.error(request, 'Invalid form submission.')
-           
-
-    form2 = FeedbackForm()
 
     cta = CallToActionPanel.objects.filter(status=1)[:1]
     form2 = FeedbackForm()

@@ -1,52 +1,54 @@
-
-.projects{
+.projects {
     margin-inline: 2em;
     margin-block: 1em;
 
-    .heading h1{
+    .heading h1 {
         text-align: center;
     }
-    
-    &__inner{
+
+    &__inner {
         display: flex;
         flex-wrap: wrap;
         gap: 2em;
         justify-content: center;
 
-        &--content{
+        &--content {
             padding: 1em;
         }
 
-        &--detail{
-            
+        &--detail {
+
             width: 80vw;
             display: flex;
-            img{
+
+            img {
                 max-width: 500px;
                 min-width: 300px;
             }
         }
-        
-        &--item{
+
+        &--item {
             max-width: 270px;
             border-left: 1px solid;
 
-            img{
+            img {
                 width: 100%;
                 aspect-ratio: 4/3;
                 object-fit: cover;
             }
 
-            h2{
+            h2 {
                 font-size: 1.4em;
                 font-weight: 700;
                 color: $secondary_color;
 
             }
-            p{
+
+            p {
                 text-align: justify;
             }
-            a{
+
+            a {
                 padding: 8px 20px;
                 margin-block: 10px;
                 border-radius: 20px;
@@ -54,8 +56,8 @@
                 float: inline-start;
                 text-transform: capitalize;
                 @include set_background($primary_color);
-                
-                &:hover{
+
+                &:hover {
                     @include set_background($fade);
                     border: 1px solid;
                     padding-block: 7px;
@@ -64,5 +66,8 @@
             }
         }
     }
+
+
     
+
 }

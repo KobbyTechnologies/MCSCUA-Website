@@ -2,6 +2,7 @@ from django.contrib import admin
 from resources import models
 from resources.models import Faq, Publication, Privacy, Terms, PubCategory, CustomerSurvey, AuditServiceCharter
 from django_summernote.admin import SummernoteModelAdmin
+from import_export.admin import ExportActionMixin
 
 
 class FaqAdmin(SummernoteModelAdmin):
@@ -22,10 +23,35 @@ class PublicationAdmin(admin.ModelAdmin):
     list_display = ['name', 'category', 'status']
 
 
-class CustomerSurveyAdmin(admin.ModelAdmin):
-    list_display = ['organization', 'name', 'title', 'date_created',]
-    list_filter = ['date_created',]
-    search_fields = ['organization', 'name']
+class AuditServiceCharterAdmin(ExportActionMixin, admin.ModelAdmin):
+    list_display = ['name', 'title', 'organization', 'date_created']
+    list_filter = ['date_created']
+    search_fields = ['organization', 'name', 'title']
+    readonly_fields = [
+        'organization',
+        'name',
+        'title',
+        'date_created',
+        'receipt_issue',
+        'complaint_log',
+        'complaint_address',
+        'satisfaction',
+        'license_payment_processing',
+        'automated_license_system',
+        'response',
+        'comments',
+        'mode_of_response',
+        'email',
+    ]
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+
+class CustomerSurveyAdmin(ExportActionMixin, admin.ModelAdmin):
+    list_display = ['name', 'title', 'organization', 'date_created']
+    list_filter = ['date_created']
+    search_fields = ['organization', 'name', 'title']
     readonly_fields = [
         'organization',
         'name',
@@ -38,34 +64,12 @@ class CustomerSurveyAdmin(admin.ModelAdmin):
         'response',
         'comments',
         'mode_of_response',
-        'other',
+        'mode_of_response_type',
         'email',
     ]
 
     def has_add_permission(self, request, obj=None):
         return False
-
-
-class AuditServiceCharterAdmin(admin.ModelAdmin):
-    list_display = ['organization', 'name', 'title', 'date_created',]
-    list_filter = ['date_created',]
-    search_fields = ['organization', 'name']
-    readonly_fields = [
-        'organization',
-        'name',
-        'title',
-        'date_created',
-        'receipt_issue',
-        'complaint_log',
-        'complaint_address',
-        'satisfaction',
-        'license_payment_processing',
-        'automated_license_system',
-        'comments',
-        'mode_of_response',
-        'response',
-        'email'
-    ]
 
 
 # Register your models here.
@@ -75,4 +79,4 @@ admin.site.register(Terms, TermsAdmin)
 admin.site.register(Privacy, PrivacyAdmin)
 admin.site.register(PubCategory)
 admin.site.register(CustomerSurvey, CustomerSurveyAdmin)
-admin.site.register(AuditServiceCharter)
+admin.site.register(AuditServiceCharter, AuditServiceCharterAdmin)

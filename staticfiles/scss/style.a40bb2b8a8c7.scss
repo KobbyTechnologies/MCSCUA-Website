@@ -1,0 +1,55 @@
+@use 'utils' as u;
+@import 'globals';
+
+
+/*back to top */
+
+.back-to-top {
+    display: inline-block;
+    background-color: $secondary_color;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 20px;
+    position: fixed;
+    bottom: 30px;
+    right: 10px;
+    transition: background-color .3s,
+        opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 100000;
+
+    &::after {
+        content: "\f077";
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 1.5em;
+        line-height: 40px;
+        color: #fff;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: #333;
+    }
+
+    &:active {
+        background-color: #555;
+    }
+
+    
+    @include u.breakpoint(small){
+        margin: 30px;
+    }
+}
+
+.show {
+    opacity: 1;
+    visibility: visible;
+}
+.container{
+    margin-inline:2rem;
+    padding: auto;
+}

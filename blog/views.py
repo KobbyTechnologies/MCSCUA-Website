@@ -55,3 +55,19 @@ class FeaturedList(ListView):
         context['form'] = SubscriptionForm()
 
         return context
+
+
+
+class FeaturedList(ListView):
+    template_name = 'featuredArticles.html'
+    paginate_by: int = 9
+    context_object_name = 'featured_list'
+    queryset = Featured.objects.filter(status=1).order_by('-created_on')
+
+    def get_object_data(self, **kwargs):
+        context = super(FeaturedList, self).get_context_data(**kwargs)
+        context['publication_category'] = PubCategory.objects.all()
+        context['project_category'] = ProjectCategory.objects.all()
+        context['form'] = SubscriptionForm()
+
+        return context

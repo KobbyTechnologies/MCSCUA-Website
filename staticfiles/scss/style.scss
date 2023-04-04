@@ -2,9 +2,7 @@
 @import 'globals';
 
 
-
-
-// back to top
+/*back to top */
 
 .back-to-top {
     display: inline-block;
@@ -50,4 +48,8 @@
 .show {
     opacity: 1;
     visibility: visible;
+}
+.container{
+    margin-inline:2rem;
+    padding: auto;
 }
