@@ -32,14 +32,15 @@ class AuditServiceCharterAdmin(ExportActionMixin, admin.ModelAdmin):
         'name',
         'title',
         'date_created',
-        'Quality',
-        'integrity',
-        'service_delivery',
-        'problem_solving',
+        'receipt_issue',
+        'complaint_log',
+        'complaint_address',
+        'satisfaction',
+        'license_payment_processing',
+        'automated_license_system',
         'response',
         'comments',
         'mode_of_response',
-        'other',
         'email',
     ]
 
@@ -47,26 +48,28 @@ class AuditServiceCharterAdmin(ExportActionMixin, admin.ModelAdmin):
         return False
 
 
-class AuditServiceCharterAdmin(ExportActionMixin, admin.ModelAdmin):
-    list_display = ['organization', 'name', 'title', 'date_created',]
-    list_filter = ['date_created',]
-    search_fields = ['organization', 'name']
+class CustomerSurveyAdmin(ExportActionMixin, admin.ModelAdmin):
+    list_display = ['name', 'title', 'organization', 'date_created']
+    list_filter = ['date_created']
+    search_fields = ['organization', 'name', 'title']
     readonly_fields = [
         'organization',
         'name',
         'title',
         'date_created',
-        'receipt_issue',
-        'complaint_log',
-        'complaint_address',
-        'satisfaction',
-        'license_payment_processing',
-        'automated_license_system',
+        'Quality',
+        'integrity',
+        'service_delivery',
+        'problem_solving',
+        'response',
         'comments',
         'mode_of_response',
-        'response',
-        'email'
+        'mode_of_response_type',
+        'email',
     ]
+
+    def has_add_permission(self, request, obj=None):
+        return False
 
 
 # Register your models here.

@@ -234,6 +234,7 @@ a,
 a:visited,
 a:active {
   text-decoration: none;
+  color: #000;
 }
 
 ol,
@@ -728,6 +729,7 @@ textarea {
 .header__top .top-links .login a {
   font-weight: 700;
   text-transform: uppercase;
+  color: white;
 }
 .header__top .top-links .login a:hover {
   color: #762403;

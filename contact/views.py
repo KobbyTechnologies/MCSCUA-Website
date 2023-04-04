@@ -30,7 +30,7 @@ def contact_view(request):
     context = {
         'form': form,
         'form2': form2,
-        # 'cta': cta,
+        'cta': cta,
         'project_category': project_category,
         'publication_category': publication_category,
         'post_category': post_category,
