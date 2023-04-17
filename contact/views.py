@@ -73,8 +73,8 @@ def subscription_form_view(request):
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'submitted successfully.')
+            messages.success(request, 'Subscription Successful')
     else:
         messages.error(request, 'Invalid form submission.')
-    return redirect('index')
+    return redirect('contact')
    

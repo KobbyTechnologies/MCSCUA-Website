@@ -4,7 +4,7 @@ from .models import Faq, Publication, Terms, Privacy, PubCategory
 from blog.models import Post,Category
 from base.forms import SubscriptionForm
 from projects.models import Project, ProjectCategory
-from .forms import CustomerSurveyForm, AuditServiceCharterForm
+from .forms import CustomerSurveyForm, AuditServiceCharterForm, LicenceApplicationForm
 from django.contrib import messages
 import os
 
@@ -60,6 +60,7 @@ def faq_view(request):
         'form': form,
         'project_category': project_category,
         'post_category': post_category,
+        'publication_category': publication_category,
     }
     return render(request, 'faq.html', context)
 
@@ -84,6 +85,7 @@ def terms(request):
         'form': form,
         'project_category': project_category,
         'post_category': post_category,
+        'publication_category': publication_category,
     }
     return render(request, 'terms.html', context)
 
@@ -109,6 +111,7 @@ def privacy(request):
         'form': form,
         'project_category': project_category,
         'post_category': post_category,
+        'publication_category': publication_category,
     }
     return render(request, 'privacy.html', context)
 
@@ -179,3 +182,30 @@ def customerSurvey(request):
 
     return render(request, 'customer_request.html', context)
 
+def licence_Application(request):
+    project_category = ProjectCategory.objects.all()
+    publication_category = PubCategory.objects.all()
+    post_category = Category.objects.all()
+
+    
+
+    if request.method == 'POST':
+        licence_application = LicenceApplicationForm(request.POST)
+        if licence_application.is_valid():
+            licence_application.save()
+            messages.success(request, 'submitted successfully.')
+            return redirect('licence-application')
+        else:
+            messages.error(request, 'Oooops!! Something went wrong. Try again later.')
+    
+    licence_application = LicenceApplicationForm()
+
+    context = {
+        
+        'licence_application': licence_application,
+        'project_category': project_category,
+        'publication_category': publication_category,
+        'post_category': post_category,
+    }
+
+    return render(request, 'licence_application.html', context)

@@ -1,6 +1,6 @@
 from django.utils.translation import gettext_lazy as _
-from django.forms import ModelForm, Textarea, EmailInput, TextInput, Select, DateInput, RadioSelect, CheckboxInput
-from .models import AuditServiceCharter, CustomerSurvey
+from django.forms import ModelForm
+from .models import AuditServiceCharter, CustomerSurvey, LicenceApplication
 
 
 class AuditServiceCharterForm(ModelForm):
@@ -41,4 +41,22 @@ class CustomerSurveyForm(ModelForm):
             'mode_of_response',
             'mode_of_response_type',
             'email',
+        ]
+
+
+class LicenceApplicationForm(ModelForm):
+    class Meta:
+        model = LicenceApplication
+        fields = [
+            'first_name',
+            'last_name',
+            'tel',
+            'physical_address',
+            'reg_no',
+            'source_location',
+            'destination_location',
+            'quantity',
+            'tranportation',
+            'vehicle_reg_no',
+            'capacity',
         ]

@@ -8,4 +8,5 @@ urlpatterns = [
     path('resource-center/privacy-policy/', views.privacy, name='privacy'),
     path('auditServiceView', views.auditServiceView, name='auditServiceView'),
     path('customerSurvey', views.customerSurvey, name='customerSurvey'),
+    path('licence-application', views.licence_Application, name='licence-application'),
 ]

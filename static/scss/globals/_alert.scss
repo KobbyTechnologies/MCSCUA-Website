@@ -1,27 +1,51 @@
+.message-container {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: auto;
+    border-radius: 10px;
+    margin-inline: 1em;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .alert {
     padding: 1em;
+    font-size: 22px;
     border: 1px solid;
+    @include u.breakpoint(large) {
+        max-width: 700px;
+    }
 
     .button {
         margin-left: 15px;
-        color: white;
+        color: #333333;
         // font-weight: bold;
         float: right;
-        font-size: 22px;
+        font-size: 30px;
         line-height: 20px;
         cursor: pointer;
         transition: 0.3s;
 
-        &:hover{
+        &:hover {
             padding: 3px;
             border-radius: 20px;
+            color: red;
             @include set_background(white)
         }
 
     }
 
     &-success {
-        @include set_background(#8bd0a7);
+        @include set_background(white);
         color: #1a5532;
+        text-align: center;
+        border: 0;
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px #292828;
     }
 }

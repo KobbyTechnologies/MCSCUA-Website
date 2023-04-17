@@ -1,12 +1,14 @@
 {% if messages %}
 {% for message in messages %}
-<div class="alert alert-dismissible alert-success">
-    <span class="button closebtn" type="button" class="close" data-dismiss="alert">
-        &times;
-    </span>
-    {{message}}
-    <div class="chart">
-        <canvas id="myChart" width="1000" height="100"></canvas>
+<div class="message-container" id="modal">
+    <div class="alert alert-dismissible alert-success">
+        <span class="button closebtn" type="button" class="close" data-dismiss="alert">
+            &times;
+        </span>
+        {{message}}
+        <div class="chart">
+            <canvas id="myChart" width="1000" height="400"></canvas>
+        </div>
     </div>
 </div>
 {% endfor %}
@@ -15,6 +17,7 @@
 <script>
     var close = document.getElementsByClassName("closebtn");
     var i;
+    var modal = document.getElementById('modal')
 
     for (i = 0; i < close.length; i++) {
         close[i].onclick = function () {
@@ -23,4 +26,13 @@
             setTimeout(function () { div.style.display = "none"; }, 600);
         }
     }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        if (event.target == close) {
+            close.style.display = "none";
+        }
+    }
+    
 </script>
