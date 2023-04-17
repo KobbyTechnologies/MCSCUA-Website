@@ -42,10 +42,9 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost',
-                 'makueni-sand-authotiry.herokuapp.com', 'https://www.makuenisandauthority.go.ke/']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'www.makuenisandauthority.go.ke/', 'www.makuenisandauthority.go.ke']
 
 
 # Application definition
